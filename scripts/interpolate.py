@@ -44,20 +44,23 @@ finally:
     if connection:
         connection.close()
 
-age = 45
-subset = df.loc[df['exact_age'] == age, ['year', 'male_death_probability']]
-subset = subset.set_index('year')
-print(subset)
+columnwise = pd.DataFrame()
+for age in df['exact_age']:
+    subset = df.loc[df['exact_age'] == age, ['year', 'male_death_probability']]
+    subset = subset.set_index('year')
+    columnwise[age] = subset
+    print(subset)
 
-# Plot the subset
-plt.plot(subset.index, subset, label='Male Death Probability by Year, Age ' + str(age))
+# # Plot the subset
+# plt.plot(subset.index, subset, label='Male Death Probability by Year, Age ' + str(age))
 
-# Customize the plot
-plt.title('Subset Plot')
-plt.xlabel('Index')
-plt.ylabel('Male Death Probability')
-plt.legend()
-plt.show()
+# # Customize the plot
+# plt.title('Subset Plot')
+# plt.xlabel('Index')
+# plt.ylabel('Male Death Probability')
+# plt.legend()
+# plt.show()
 
+print(columnwise)
 
 
