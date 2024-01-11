@@ -1,7 +1,8 @@
 import psycopg2
 import pandas as pd
-from scipy.interpolate import splrep, splev
+from scipy.interpolate import UnivariateSpline
 import matplotlib.pyplot as plt
+import numpy as np
 
 # Database information
 dbname = "life_tables"
@@ -51,16 +52,34 @@ for age in df['exact_age']:
     columnwise[age] = subset
     print(subset)
 
-# # Plot the subset
-# plt.plot(subset.index, subset, label='Male Death Probability by Year, Age ' + str(age))
-
-# # Customize the plot
-# plt.title('Subset Plot')
-# plt.xlabel('Index')
-# plt.ylabel('Male Death Probability')
-# plt.legend()
-# plt.show()
-
 print(columnwise)
 
+def splineExpander(col):
+    # fit spline to column
+    spline = UnivariateSpline(col.index, col.values, k=3, s=0)
+    return spline
+
+splineList = [splineExpander(columnwise[col]) for col in columnwise.columns]
+
+# Expand the timeline for a smoother curve
+increment = 0.04
+minYear = min(columnwise.index)
+maxYear = max(columnwise.index)
+expandedTimeline = np.arange(minYear, maxYear + increment, increment)
+
+# Feed each spline the expanded time line
+splineValues = [spline(expandedTimeline) for spline in splineList]
+result_df = pd.DataFrame(np.column_stack(splineValues), index=expandedTimeline)
+print(result_df.head(26))
+
+# Specify the column name you want to plot
+age = 80  # Change this to the actual column name
+
+# Plot the selected column
+plt.plot(result_df.index, result_df[age], label=age)
+plt.xlabel('Expanded Timeline')
+plt.ylabel('Spline Values')
+plt.title(f'Plot of {column_to_plot}')
+plt.legend()
+plt.show()
 
