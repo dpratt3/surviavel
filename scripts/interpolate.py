@@ -62,7 +62,7 @@ def splineExpander(col):
 splineList = [splineExpander(columnwise[col]) for col in columnwise.columns]
 
 # Expand the timeline for a smoother curve
-increment = 0.04
+increment = 1/25
 minYear = min(columnwise.index)
 maxYear = max(columnwise.index)
 expandedTimeline = np.arange(minYear, maxYear + increment, increment)
@@ -70,16 +70,22 @@ expandedTimeline = np.arange(minYear, maxYear + increment, increment)
 # Feed each spline the expanded time line
 splineValues = [spline(expandedTimeline) for spline in splineList]
 result_df = pd.DataFrame(np.column_stack(splineValues), index=expandedTimeline)
-print(result_df.head(26))
+
+# Get the dimensions (number of rows and columns) of the DataFrame
+num_rows, num_columns = result_df.shape
+
+# Print the dimensions
+print(f'Number of rows: {num_rows}')
+print(f'Number of columns: {num_columns}')
 
 # Specify the column name you want to plot
-age = 80  # Change this to the actual column name
+age = 3  # Change this to the actual column name
 
 # Plot the selected column
 plt.plot(result_df.index, result_df[age], label=age)
 plt.xlabel('Expanded Timeline')
 plt.ylabel('Spline Values')
-plt.title(f'Plot of {column_to_plot}')
+plt.title(f'Plot of {age}')
 plt.legend()
 plt.show()
 
