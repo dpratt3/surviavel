@@ -9,7 +9,7 @@ class LifeExpectancy extends Model
 {
     use HasFactory;
 
-    protected $table = 'life_expectancies';
+    protected $table = 'life_tables';
     
     protected $fillable = [
         'exact_age',
