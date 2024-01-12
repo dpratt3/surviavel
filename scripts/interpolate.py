@@ -3,6 +3,8 @@ import pandas as pd
 from scipy.interpolate import UnivariateSpline
 import matplotlib.pyplot as plt
 import numpy as np
+from sqlalchemy import create_engine
+import re
 
 # Database information
 dbname = "life_tables"
@@ -45,47 +47,73 @@ finally:
     if connection:
         connection.close()
 
-columnwise = pd.DataFrame()
-for age in df['exact_age']:
-    subset = df.loc[df['exact_age'] == age, ['year', 'male_death_probability']]
-    subset = subset.set_index('year')
-    columnwise[age] = subset
-    print(subset)
+# Pandas is only compatible with SQLALchemy
+engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{dbname}')
+        
+# From the original database
+colnames = [ 'male_death_probability',  
+             'male_number_of_lives',
+             'male_life_expectancy',
+             'female_death_probability', 
+             'female_number_of_lives',
+             'female_life_expectancy']
 
-print(columnwise)
+for colname in colnames:
+    columnwise = pd.DataFrame()
+    for age in df['exact_age']:
+        subset = df.loc[df['exact_age'] == age, ['year', colname]]
+        subset = subset.set_index('year')
+        columnwise[age] = subset
+        print(subset)
 
-def splineExpander(col):
-    # fit spline to column
-    spline = UnivariateSpline(col.index, col.values, k=3, s=0)
-    return spline
+    print(columnwise)
 
-splineList = [splineExpander(columnwise[col]) for col in columnwise.columns]
+    def splineExpander(col):
+        # fit spline to column
+        spline = UnivariateSpline(col.index, col.values, k=3, s=0)
+        return spline
 
-# Expand the timeline for a smoother curve
-increment = 1/25
-minYear = min(columnwise.index)
-maxYear = max(columnwise.index)
-expandedTimeline = np.arange(minYear, maxYear + increment, increment)
+    splineList = [splineExpander(columnwise[col]) for col in columnwise.columns]
 
-# Feed each spline the expanded time line
-splineValues = [spline(expandedTimeline) for spline in splineList]
-result_df = pd.DataFrame(np.column_stack(splineValues), index=expandedTimeline)
+    # Expand the timeline for a smoother curve
+    increment = 1/25
+    minYear = min(columnwise.index)
+    maxYear = max(columnwise.index)
+    expandedTimeline = np.arange(minYear, maxYear + increment, increment)
 
-# Get the dimensions (number of rows and columns) of the DataFrame
-num_rows, num_columns = result_df.shape
+    # Feed each spline the expanded time line
+    splineValues = [spline(expandedTimeline) for spline in splineList]
+    result_df = pd.DataFrame(np.column_stack(splineValues), index=expandedTimeline)
 
-# Print the dimensions
-print(f'Number of rows: {num_rows}')
-print(f'Number of columns: {num_columns}')
+    # Get the dimensions (number of rows and columns) of the DataFrame
+    num_rows, num_columns = result_df.shape
 
-# Specify the column name you want to plot
-age = 3  # Change this to the actual column name
+    # Print the dimensions
+    print(f'Number of rows: {num_rows}')
+    print(f'Number of columns: {num_columns}')
 
-# Plot the selected column
-plt.plot(result_df.index, result_df[age], label=age)
-plt.xlabel('Expanded Timeline')
-plt.ylabel('Spline Values')
-plt.title(f'Plot of {age}')
-plt.legend()
-plt.show()
+    # Specify the column name
+    # age = 3  # Change this to the actual column name
+
+    # # Plot the selected column
+    # plt.plot(result_df.index, result_df[age], label=age)
+    # plt.xlabel('Expanded Timeline')
+    # plt.ylabel('Spline Values')
+    # plt.title(f'Plot of {age}')
+    # plt.legend()
+    # plt.show()
+
+    # write table names to database
+    table_name = colname + '_interpolated'
+    
+    if("lives" in table_name):
+        result_df = np.round(result_df)
+
+    result_df['year'] = np.round(result_df.index, 2)
+    result_df.to_sql(name=table_name, con=engine, index=False, if_exists='replace')
+
+
+
+
+    
 
