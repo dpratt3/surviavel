@@ -9,7 +9,8 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/life-expectancies');
+        // const response = await axios.get('http://localhost:8000/api/life-expectancies');
+        const response = await axios.get('http://localhost:8000/api/female-death-probability-interpolated')
         setData(response.data);
 
       } catch (error) {
@@ -24,19 +25,22 @@ const App = () => {
     <div>
       <HelloWorld />
       
-      {data.map(item => (
+      {/* {data.map(item => (
         <div key={item.id}>
-          {/* Render the desired data fields */}
           <div>Exact Age: {item.exact_age}</div>
           <div>Male Death Probability: {item.male_death_probability}</div>
           <div>Male Number of Lives: {item.male_number_of_lives}</div>
           <div>Female Death Probability: {item.female_death_probability}</div>
           <div>Female Number of Lives: {item.female_number_of_lives}</div>
           <div>Year: {item.year}</div>
-          {/* Add more fields as needed */}
+        </div>
+      ))} */}
+      
+      {data.map(item => (
+        <div key={item.id}>
+          {/* <div>Year: {item.year}</div> */}
         </div>
       ))}
-      
     </div>
   );
 };

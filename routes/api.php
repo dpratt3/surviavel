@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LifeExpectancyController;
+use App\Http\Controllers\FemaleDeathProbabilityInterpolatedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/life-expectancies', [LifeExpectancyController::class, 'index']);
+Route::get('/female-death-probability-interpolated', [FemaleDeathProbabilityInterpolatedController::class, 'index']);
