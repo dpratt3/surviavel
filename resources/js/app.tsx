@@ -10,7 +10,9 @@ const App = () => {
     const fetchData = async () => {
       try {
         // const response = await axios.get('http://localhost:8000/api/life-expectancies');
-        const response = await axios.get('http://localhost:8000/api/female-death-probability-interpolated')
+        // const response = await axios.get('http://localhost:8000/api/female-death-probability-interpolated');
+        const response = await axios.get('http://localhost:8000/api/female-number-of-lives-interpolated');
+        console.log(response)
         setData(response.data);
 
       } catch (error) {
