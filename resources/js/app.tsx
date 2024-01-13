@@ -38,7 +38,7 @@ const App = () => {
       
       {data.map(item => (
         <div key={item.id}>
-          {/* <div>Year: {item.year}</div> */}
+          <div>Year: {item.year}, Value: {item['0']}</div>
         </div>
       ))}
     </div>
