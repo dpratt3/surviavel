@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LifeExpectancyController;
 use App\Http\Controllers\FemaleDeathProbabilityInterpolatedController;
 use App\Http\Controllers\FemaleNumberOfLivesInterpolatedController;
+use App\Http\Controllers\MaleDeathProbabilityInterpolatedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/life-expectancies', [LifeExpectancyController::class, 'index']);
 Route::get('/female-death-probability-interpolated', [FemaleDeathProbabilityInterpolatedController::class, 'index']);
 Route::get('/female-number-of-lives-interpolated', [FemaleNumberOfLivesInterpolatedController::class, 'index']);
+Route::get('/male-death-probability-interpolated', [MaleDeathProbabilityInterpolatedController::class, 'index']);
