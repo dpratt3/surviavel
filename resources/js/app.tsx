@@ -13,7 +13,8 @@ const App = () => {
         // const response = await axios.get('http://localhost:8000/api/female-life-expectancy-interpolated');
         // const response = await axios.get('http://localhost:8000/api/female-death-probability-interpolated');
         // const response = await axios.get('http://localhost:8000/api/female-number-of-lives-interpolated');
-        const response = await axios.get('http://localhost:8000/api/male-life-expectancy-interpolated');
+        // const response = await axios.get('http://localhost:8000/api/male-life-expectancy-interpolated');
+        const response = await axios.get('http://localhost:8000/api/male-number-of-lives-interpolated');
         // const response = await axios.get('http://localhost:8000/api/male-death-probability-interpolated');
         
         console.log(response)
@@ -45,7 +46,7 @@ const App = () => {
       
       {data.map(item => (
         <div key={item.id}>
-          <div>Year: {item.year}, Value: {item['0']}</div>
+          <div>Year: {item.year}, Value: {item['37']}</div>
         </div>
       ))}
     </div>
