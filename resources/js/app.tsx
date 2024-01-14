@@ -27,8 +27,6 @@ const App = () => {
 
   return (
     <div>
-      <HelloWorld />
-
       {/* Add a dropdown menu */}
       <label>
         Select Data:
@@ -44,7 +42,7 @@ const App = () => {
       </label>
 
       {data.map(item => (
-        <div key={item.id}>
+        <div key={item.year}>
           <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
         </div>
       ))}
