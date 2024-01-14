@@ -6,6 +6,7 @@ use App\Http\Controllers\LifeExpectancyController;
 use App\Http\Controllers\FemaleDeathProbabilityInterpolatedController;
 use App\Http\Controllers\FemaleNumberOfLivesInterpolatedController;
 use App\Http\Controllers\MaleDeathProbabilityInterpolatedController;
+use App\Http\Controllers\MaleNumberOfLivesInterpolatedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,4 @@ Route::get('/life-expectancies', [LifeExpectancyController::class, 'index']);
 Route::get('/female-death-probability-interpolated', [FemaleDeathProbabilityInterpolatedController::class, 'index']);
 Route::get('/female-number-of-lives-interpolated', [FemaleNumberOfLivesInterpolatedController::class, 'index']);
 Route::get('/male-death-probability-interpolated', [MaleDeathProbabilityInterpolatedController::class, 'index']);
+Route::get('/male-number-of-lives-interpolated', [MaleNumberOfLivesInterpolatedController::class, 'index']);
