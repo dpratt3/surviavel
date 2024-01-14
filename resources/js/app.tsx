@@ -45,7 +45,7 @@ const App = () => {
 
       {data.map(item => (
         <div key={item.id}>
-          <div>Year: {item.year}, Value: {item['37']}</div>
+          <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
         </div>
       ))}
     </div>
