@@ -10,9 +10,11 @@ const App = () => {
     const fetchData = async () => {
       try {
         // const response = await axios.get('http://localhost:8000/api/life-expectancies');
+        // const response = await axios.get('http://localhost:8000/api/female-life-expectancy-interpolated');
         // const response = await axios.get('http://localhost:8000/api/female-death-probability-interpolated');
         // const response = await axios.get('http://localhost:8000/api/female-number-of-lives-interpolated');
-        const response = await axios.get('http://localhost:8000/api/male-death-probability-interpolated');
+        const response = await axios.get('http://localhost:8000/api/male-life-expectancy-interpolated');
+        // const response = await axios.get('http://localhost:8000/api/male-death-probability-interpolated');
         
         console.log(response)
 
