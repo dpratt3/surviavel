@@ -5,45 +5,44 @@ import HelloWorld from './Components/HelloWorld';
 
 const App = () => {
   const [data, setData] = useState([]);
+  const [selectedOption, setSelectedOption] = useState('male-number-of-lives-interpolated');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await axios.get('http://localhost:8000/api/life-expectancies');
-        // const response = await axios.get('http://localhost:8000/api/female-life-expectancy-interpolated');
-        // const response = await axios.get('http://localhost:8000/api/female-death-probability-interpolated');
-        // const response = await axios.get('http://localhost:8000/api/female-number-of-lives-interpolated');
-        // const response = await axios.get('http://localhost:8000/api/male-life-expectancy-interpolated');
-        const response = await axios.get('http://localhost:8000/api/male-number-of-lives-interpolated');
-        // const response = await axios.get('http://localhost:8000/api/male-death-probability-interpolated');
-        
-        console.log(response)
-
+        const response = await axios.get(`http://localhost:8000/api/${selectedOption}`);
+        console.log(response);
         setData(response.data);
-
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [selectedOption]);
+
+  const handleDropdownChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
 
   return (
     <div>
       <HelloWorld />
-      
-      {/* {data.map(item => (
-        <div key={item.id}>
-          <div>Exact Age: {item.exact_age}</div>
-          <div>Male Death Probability: {item.male_death_probability}</div>
-          <div>Male Number of Lives: {item.male_number_of_lives}</div>
-          <div>Female Death Probability: {item.female_death_probability}</div>
-          <div>Female Number of Lives: {item.female_number_of_lives}</div>
-          <div>Year: {item.year}</div>
-        </div>
-      ))} */}
-      
+
+      {/* Add a dropdown menu */}
+      <label>
+        Select Data:
+        <select value={selectedOption} onChange={handleDropdownChange}>
+          <option value="life-expectancies">Life Expectancies</option>
+          <option value="female-life-expectancy-interpolated">Female Life Expectancy Interpolated</option>
+          <option value="female-death-probability-interpolated">Female Death Probability Interpolated</option>
+          <option value="female-number-of-lives-interpolated">Female Number of Lives Interpolated</option>
+          <option value="male-life-expectancy-interpolated">Male Life Expectancy Interpolated</option>
+          <option value="male-number-of-lives-interpolated">Male Number of Lives</option>
+          <option value="male-death-probability-interpolated">Male Death Probability Interpolated</option>
+        </select>
+      </label>
+
       {data.map(item => (
         <div key={item.id}>
           <div>Year: {item.year}, Value: {item['37']}</div>
