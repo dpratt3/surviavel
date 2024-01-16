@@ -78,7 +78,7 @@ for colname in colnames:
     splineList = [splineExpander(columnwise[col]) for col in columnwise.columns]
 
     # Expand the timeline for a smoother curve
-    increment = 1/25
+    increment = 1/10
     minYear = min(columnwise.index)
     maxYear = max(columnwise.index)
     expandedTimeline = np.arange(minYear, maxYear + increment, increment)

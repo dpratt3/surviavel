@@ -16,7 +16,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
     if (isAnimating) {
       animationInterval = setInterval(() => {
         setCurrentIndex(current => (current + 1) % (data ? data.length : 1));
-      }, 1000/50 ); // Frames per second (equal to denominator)
+      }, 0 ); // Frames per second (equal to denominator)
     }
 
     return () => {
@@ -58,9 +58,11 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
     title: `Bar Chart for ${ Math.floor(yearData.year)}`,
     xaxis: {
       title: 'Values',
+      range: [0, 120]
     },
     yaxis: {
       title: 'Count',
+      //range: [0, 100000]
     },
   };
 
@@ -71,6 +73,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
       <button onClick={onToggleAnimation}>
         {isAnimating ? 'Stop Continuous Animation' : 'Start Continuous Animation'}
       </button>
+
+
     </div>
   );
 };
