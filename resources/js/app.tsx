@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import HelloWorld from './Components/HelloWorld';
+import AnimatedBarChart from './Components/AnimatedBarChart';
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -41,11 +41,15 @@ const App = () => {
         </select>
       </label>
 
-      {data.map(item => (
+      {/* {data.map(item => (
         <div key={item.year}>
           <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
         </div>
-      ))}
+      ))} */}
+
+      <div>
+        <AnimatedBarChart data = {data} />
+      </div>
     </div>
   );
 };
