@@ -10,6 +10,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [referenceYear, setReferenceYear] = useState(2004)
+  const [referenceData, setReferenceData] = useState([])
 
   useEffect(() => {
     let animationInterval: NodeJS.Timeout;
@@ -22,9 +23,17 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
 
     return () => {
       clearInterval(animationInterval);
-    };
-  }, [isAnimating, data]);
+      };
+    }, [isAnimating, data]);
 
+    useEffect(() => {
+      const dataArray = Object.values(data);
+      const subsettedData = dataArray.filter(item => item.year === String(referenceYear));
+      console.log('Subsetted Data:', subsettedData);
+      setReferenceData(subsettedData);
+
+    }, [referenceYear, data]);
+      
   const onNextFrame = () => {
     setCurrentIndex(current => (current + 1) % (data ? data.length : 1));
   };
@@ -47,6 +56,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
   const yearData = data[currentIndex];
   const keys = Object.keys(yearData).filter(key => key !== 'year');
   const values = keys.map(key => Number(yearData[key]));
+
+  console.log(referenceData, "reference data")
 
   const frames = [
     {
@@ -91,7 +102,11 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
       </select>
       <p>Selected Year: {referenceYear}</p>
     </div>
-
+    {referenceData.map(item => (
+        <div key={item.year}>
+          <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
+        </div>
+      ))}
     </div>
   );
 };
