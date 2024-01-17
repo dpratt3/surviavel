@@ -9,6 +9,7 @@ interface AnimatedBarChartProps {
 const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [referenceYear, setReferenceYear] = useState(2004)
 
   useEffect(() => {
     let animationInterval: NodeJS.Timeout;
@@ -32,6 +33,12 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
     setIsAnimating(prev => !prev);
   };
 
+  const Eligibleyears = Array.from({ length: 2022 - 2004 + 1 }, (_, index) => 2004 + index);
+
+  const handleChange = (event) => {
+    setReferenceYear(parseInt(event.target.value, 10)); // Convert the value to an integer
+  };
+  
   // Check if data is available
   if (!data || data.length === 0 || !data[currentIndex] || !data[currentIndex].year) {
     return <div>Loading...</div>;
@@ -73,7 +80,17 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
       <button onClick={onToggleAnimation}>
         {isAnimating ? 'Stop Continuous Animation' : 'Start Continuous Animation'}
       </button>
-
+      <div>
+      <label htmlFor="yearDropdown">Select a Year:</label>
+      <select id="yearDropdown" value={referenceYear} onChange={handleChange}>
+        {Eligibleyears.map((year) => (
+          <option key={year} value={year}>
+            {year}
+          </option>
+        ))}
+      </select>
+      <p>Selected Year: {referenceYear}</p>
+    </div>
 
     </div>
   );
