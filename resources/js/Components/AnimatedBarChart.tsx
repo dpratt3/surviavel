@@ -9,78 +9,98 @@ interface AnimatedBarChartProps {
 const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [referenceYear, setReferenceYear] = useState(2004)
-  const [referenceData, setReferenceData] = useState([])
+  const [referenceYear, setReferenceYear] = useState(2004);
+  const [referenceData, setReferenceData] = useState([]);
 
   useEffect(() => {
     let animationInterval: NodeJS.Timeout;
 
     if (isAnimating) {
       animationInterval = setInterval(() => {
-        setCurrentIndex(current => (current + 1) % (data ? data.length : 1));
-      }, 0 ); // Frames per second (equal to denominator)
+        setCurrentIndex((current) => (current + 1) % (data ? data.length : 1));
+      }, 0); // Frames per second (equal to denominator)
     }
 
     return () => {
       clearInterval(animationInterval);
-      };
-    }, [isAnimating, data]);
+    };
+  }, [isAnimating, data]);
 
-    useEffect(() => {
-      const dataArray = Object.values(data);
-      const subsettedData = dataArray.filter(item => item.year === String(referenceYear));
-      console.log('Subsetted Data:', subsettedData);
-      setReferenceData(subsettedData);
+  // Initial run to populate reference data
+  useEffect(() => {
+    const dataArray = Object.values(data);
+    const subsettedData = dataArray.filter((item) => item.year === String(referenceYear));
+    console.log('Subsetted Data:', subsettedData);
+    setReferenceData(subsettedData);
+  }, []);
 
-    }, [referenceYear, data]);
-      
+  // Subsequent runs to plot initial data
+  useEffect(() => {
+    const dataArray = Object.values(data);
+    const subsettedData = dataArray.filter((item) => item.year === String(referenceYear));
+    console.log('Subsetted Data:', subsettedData);
+    setReferenceData(subsettedData);
+  }, [referenceYear, data]);
+
   const onNextFrame = () => {
-    setCurrentIndex(current => (current + 1) % (data ? data.length : 1));
+    setCurrentIndex((current) => (current + 1) % (data ? data.length : 1));
   };
 
   const onToggleAnimation = () => {
-    setIsAnimating(prev => !prev);
+    setIsAnimating((prev) => !prev);
   };
 
-  const Eligibleyears = Array.from({ length: 2022 - 2004 + 1 }, (_, index) => 2004 + index);
+  const Eligibleyears = Array.from({ length: 2020 - 2004 + 1 }, (_, index) => 2004 + index);
 
   const handleChange = (event) => {
     setReferenceYear(parseInt(event.target.value, 10)); // Convert the value to an integer
   };
-  
+
   // Check if data is available
   if (!data || data.length === 0 || !data[currentIndex] || !data[currentIndex].year) {
     return <div>Loading...</div>;
   }
 
   const yearData = data[currentIndex];
-  const keys = Object.keys(yearData).filter(key => key !== 'year');
-  const values = keys.map(key => Number(yearData[key]));
+  const keys = Object.keys(yearData).filter((key) => key !== 'year');
+  const values = keys.map((key) => Number(yearData[key]));
 
-  console.log(referenceData, "reference data")
+  // Line trace (static)
+  let refData = { ...referenceData['0'] }; // don't delete year key from other objects by reference
+  delete refData.year;
+  let lineKeys = Object.keys(refData);
+  let lineVals = Object.values(refData);
 
   const frames = [
     {
-      name: `Frame ${currentIndex}`,
+      name: `Bar Chart ${currentIndex}`,
       data: [
         {
           x: keys,
           y: values,
           type: 'bar',
+          name: 'Bar Chart',
+        },
+        {
+          x: lineKeys,
+          y: lineVals,
+          type: 'scatter',
+          mode: 'lines',
+          name: 'Line Chart',
         },
       ],
     },
   ];
 
   const layout = {
-    title: `Bar Chart for ${ Math.floor(yearData.year)}`,
+    title: `Bar and Line Chart for ${Math.floor(yearData.year)}`,
     xaxis: {
       title: 'Values',
-      range: [0, 120]
+      range: [0, 120],
     },
     yaxis: {
       title: 'Count',
-      //range: [0, 100000]
+      // range: [0, 100000]
     },
   };
 
@@ -92,17 +112,17 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
         {isAnimating ? 'Stop Continuous Animation' : 'Start Continuous Animation'}
       </button>
       <div>
-      <label htmlFor="yearDropdown">Select a Year:</label>
-      <select id="yearDropdown" value={referenceYear} onChange={handleChange}>
-        {Eligibleyears.map((year) => (
-          <option key={year} value={year}>
-            {year}
-          </option>
-        ))}
-      </select>
-      <p>Selected Year: {referenceYear}</p>
-    </div>
-    {referenceData.map(item => (
+        <label htmlFor="yearDropdown">Select a Year:</label>
+        <select id="yearDropdown" value={referenceYear} onChange={handleChange}>
+          {Eligibleyears.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
+        <p>Selected Year: {referenceYear}</p>
+      </div>
+      {referenceData.map((item) => (
         <div key={item.year}>
           <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
         </div>
