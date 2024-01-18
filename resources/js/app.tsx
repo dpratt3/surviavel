@@ -40,7 +40,7 @@ const App = () => {
     <div>
       {/* Add a dropdown menu */}
       <label>
-        Select Data:
+        Select Series: 
         <select value={selectedOption} onChange={handleDropdownChange}>
           {/* <option value="life-expectancies">Life Expectancies</option> */}
           <option value="female-life-expectancy-interpolated">Female Life Expectancy</option>

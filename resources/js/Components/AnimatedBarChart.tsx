@@ -47,8 +47,9 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
   };
 
   const onPriorFrame = () => {
-    setCurrentIndex((current) => (current - 1) % (data ? data.length : 1));
+    setCurrentIndex((current) => (current - 1 + (data ? data.length : 1)) % (data ? data.length : 1));
   };
+  
 
   const onToggleAnimation = () => {
     setIsAnimating((prev) => !prev);
@@ -107,8 +108,9 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
       //range: [0, 100000]
     },
     legend: {
-      x: 0.25,
-      y: -0.25, // Set y to a value less than 1 to position the legend at the bottom
+      x: 0.5,
+      xanchor: 'center', 
+      y: 1.125, // Set y to a value less than 1 to position the legend at the bottom
       traceorder: 'normal', // Set the trace order in the legend
       orientation: 'h', // Set the orientation to horizontal
     },
