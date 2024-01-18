@@ -37,7 +37,8 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
+      <h1>Surviavel</h1>
       {/* Add a dropdown menu */}
       <label>
         Select Series: 
@@ -58,7 +59,7 @@ const App = () => {
         </div>
       ))} */}
 
-      <div>
+      <div style={{ margin: 'auto', width: '50%' }}>
         <AnimatedBarChart data={data} title={title} />
       </div>
     </div>
