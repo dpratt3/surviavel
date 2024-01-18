@@ -83,14 +83,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
           x: keys,
           y: values,
           type: 'bar',
-          name: 'Bar Chart',
+          name: 'Current Year',
         },
         {
           x: lineKeys,
           y: lineVals,
           type: 'scatter',
           mode: 'lines',
-          name: 'Line Chart',
+          name: 'Reference Year',
         },
       ],
     },
@@ -105,6 +105,12 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
     yaxis: {
       title: 'Count',
       //range: [0, 100000]
+    },
+    legend: {
+      x: 0.25,
+      y: -0.25, // Set y to a value less than 1 to position the legend at the bottom
+      traceorder: 'normal', // Set the trace order in the legend
+      orientation: 'h', // Set the orientation to horizontal
     },
   };
 

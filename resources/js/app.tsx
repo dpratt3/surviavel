@@ -31,12 +31,12 @@ const App = () => {
       <label>
         Select Data:
         <select value={selectedOption} onChange={handleDropdownChange}>
-          <option value="life-expectancies">Life Expectancies</option>
+          {/* <option value="life-expectancies">Life Expectancies</option> */}
           <option value="female-life-expectancy-interpolated">Female Life Expectancy Interpolated</option>
           <option value="female-death-probability-interpolated">Female Death Probability Interpolated</option>
           <option value="female-number-of-lives-interpolated">Female Number of Lives Interpolated</option>
           <option value="male-life-expectancy-interpolated">Male Life Expectancy Interpolated</option>
-          <option value="male-number-of-lives-interpolated">Male Number of Lives</option>
+          <option value="male-number-of-lives-interpolated">Male Number of Lives Interpolated</option>
           <option value="male-death-probability-interpolated">Male Death Probability Interpolated</option>
         </select>
       </label>
