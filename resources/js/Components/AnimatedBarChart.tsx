@@ -130,12 +130,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         {/* <p>Selected Year: {referenceYear}</p> */}
       </div>
       <Plot data={frames[0].data} layout={layout} config={{ displayModeBar: false }} />
-      <button onClick={onPriorFrame}>Prior Frame</button>
-      <button onClick={onNextFrame}>Next Frame</button>
-      <button onClick={onToggleAnimation}>
-        {isAnimating ? 'Stop Continuous Animation' : 'Start Continuous Animation'}
-      </button>
-
+      
+      <div style={{ display: 'flex', margin: '10px', justifyContent: 'center' }}>
+        <button onClick={onPriorFrame}>Prior Frame</button>
+        <button onClick={onNextFrame}>Next Frame</button>
+        <button onClick={onToggleAnimation}>
+          {isAnimating ? 'Stop Continuous Animation' : 'Start Continuous Animation'}
+        </button>
+      </div>
       {/* {referenceData.map((item) => (
         <div key={item.year}>
           <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
