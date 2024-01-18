@@ -18,7 +18,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
     if (isAnimating) {
       animationInterval = setInterval(() => {
         setCurrentIndex((current) => (current + 1) % (data ? data.length : 1));
-      }, 0); // Frames per second (equal to denominator)
+      }, 1000/10); // Frames per second (equal to denominator)
     }
 
     return () => {
@@ -44,6 +44,10 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
 
   const onNextFrame = () => {
     setCurrentIndex((current) => (current + 1) % (data ? data.length : 1));
+  };
+
+  const onPriorFrame = () => {
+    setCurrentIndex((current) => (current - 1) % (data ? data.length : 1));
   };
 
   const onToggleAnimation = () => {
@@ -100,13 +104,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
     },
     yaxis: {
       title: 'Count',
-      // range: [0, 100000]
+      //range: [0, 100000]
     },
   };
 
   return (
     <div>
       <Plot data={frames[0].data} layout={layout} config={{ displayModeBar: false }} />
+      <button onClick={onPriorFrame}>Prior Frame</button>
       <button onClick={onNextFrame}>Next Frame</button>
       <button onClick={onToggleAnimation}>
         {isAnimating ? 'Stop Continuous Animation' : 'Start Continuous Animation'}
@@ -120,13 +125,13 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
             </option>
           ))}
         </select>
-        <p>Selected Year: {referenceYear}</p>
+        {/* <p>Selected Year: {referenceYear}</p> */}
       </div>
-      {referenceData.map((item) => (
+      {/* {referenceData.map((item) => (
         <div key={item.year}>
           <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };
