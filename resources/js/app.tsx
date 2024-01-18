@@ -7,6 +7,17 @@ const App = () => {
   const [data, setData] = useState([]);
   const [selectedOption, setSelectedOption] = useState('male-number-of-lives-interpolated');
 
+  const titleMap = {
+      'female-life-expectancy-interpolated': 'Female Life Expectancy',
+      'female-death-probability-interpolated': 'Female Death Probability',
+      'female-number-of-lives-interpolated': 'Female Number of Lives',
+      'male-life-expectancy-interpolated': 'Male Life Expectancy',
+      'male-number-of-lives-interpolated': 'Male Number of Lives',
+      'male-death-probability-interpolated': 'Male Death Probability'
+    };
+
+  const title = titleMap[selectedOption]
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,15 +43,15 @@ const App = () => {
         Select Data:
         <select value={selectedOption} onChange={handleDropdownChange}>
           {/* <option value="life-expectancies">Life Expectancies</option> */}
-          <option value="female-life-expectancy-interpolated">Female Life Expectancy Interpolated</option>
-          <option value="female-death-probability-interpolated">Female Death Probability Interpolated</option>
-          <option value="female-number-of-lives-interpolated">Female Number of Lives Interpolated</option>
-          <option value="male-life-expectancy-interpolated">Male Life Expectancy Interpolated</option>
-          <option value="male-number-of-lives-interpolated">Male Number of Lives Interpolated</option>
-          <option value="male-death-probability-interpolated">Male Death Probability Interpolated</option>
+          <option value="female-life-expectancy-interpolated">Female Life Expectancy</option>
+          <option value="female-death-probability-interpolated">Female Death Probability</option>
+          <option value="female-number-of-lives-interpolated">Female Number of Lives</option>
+          <option value="male-life-expectancy-interpolated">Male Life Expectancy</option>
+          <option value="male-number-of-lives-interpolated">Male Number of Lives</option>
+          <option value="male-death-probability-interpolated">Male Death Probability</option>
         </select>
       </label>
-
+      
       {/* {data.map(item => (
         <div key={item.year}>
           <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
@@ -48,7 +59,7 @@ const App = () => {
       ))} */}
 
       <div>
-        <AnimatedBarChart data = {data} />
+        <AnimatedBarChart data={data} title={title} />
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ interface AnimatedBarChartProps {
   data: { [key: number]: Record<string, string> }[] | null;
 }
 
-const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
+const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [referenceYear, setReferenceYear] = useState(2004);
@@ -97,7 +97,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data }) => {
   ];
 
   const layout = {
-    title: `Bar and Line Chart for ${Math.floor(yearData.year)}`,
+    title: `${title} for ${Math.floor(yearData.year)}`,
     xaxis: {
       title: 'Values',
       range: [0, 120],
