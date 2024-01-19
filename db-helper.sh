@@ -8,6 +8,7 @@ php artisan migrate
 php artisan db:seed
 
 cd scripts
+./format-hist-mort.py
 ./interpolate.py
 
 echo "Migration and seeding complete."
