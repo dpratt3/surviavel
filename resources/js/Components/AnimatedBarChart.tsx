@@ -9,7 +9,7 @@ interface AnimatedBarChartProps {
 const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [referenceYear, setReferenceYear] = useState(2004);
+  const [referenceYear, setReferenceYear] = useState(1941);
   const [referenceData, setReferenceData] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     if (isAnimating) {
       animationInterval = setInterval(() => {
         setCurrentIndex((current) => (current + 1) % (data ? data.length : 1));
-      }, 1000/10); // Frames per second (equal to denominator)
+      }, 1000/20); // Frames per second (equal to denominator)
     }
 
     return () => {
@@ -55,7 +55,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     setIsAnimating((prev) => !prev);
   };
 
-  const Eligibleyears = Array.from({ length: 2020 - 2004 + 1 }, (_, index) => 2004 + index);
+  const Eligibleyears = Array.from({ length: 2020 - 1941 + 1 }, (_, index) => 1941 + index);
 
   const handleChange = (event) => {
     setReferenceYear(parseInt(event.target.value, 10)); // Convert the value to an integer

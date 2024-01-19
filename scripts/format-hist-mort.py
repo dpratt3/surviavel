@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 # This script will ingest the berkley data and make it congruent to the SSA data
+import psycopg2
+from sqlalchemy import create_engine
+import pandas as pd
 
 import pandas as pd
 
@@ -59,4 +62,24 @@ column_order = [
 life_table_extended = life_table_extended[column_order]
 print(life_table_extended)
 
+# Database connection information
+dbname = "life_tables"
+user = "postgres"
+password = "password"
+host = "localhost"
+port = "5432"
 
+# Create a SQLAlchemy engine
+engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{dbname}')
+
+# Fetch existing data from the PostgreSQL table
+existing_data = pd.read_sql('SELECT * FROM life_tables', engine)
+
+# Prepend life_table_extended to existing_data
+combined_data = pd.concat([life_table_extended, existing_data], ignore_index=True)
+
+# Write the combined and modified data to the PostgreSQL table
+combined_data.to_sql('life_tables', engine, if_exists='replace', index=False)
+
+# Close the database connection
+engine.dispose()
