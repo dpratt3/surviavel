@@ -8,6 +8,7 @@ php artisan migrate
 php artisan db:seed
 
 cd scripts
+chmod +x *.py
 ./format-hist-mort.py
 ./interpolate.py
 
