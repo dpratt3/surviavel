@@ -9,9 +9,32 @@ female_data = pd.read_csv("../storage/app/data/berkley-mortality-database/male-m
 male_subset = male_data[['Year', 'Age', 'mx', 'lx', 'ex']]
 female_subset = female_data[['Year', 'Age', 'mx', 'lx', 'ex']]
 
+# rename columns: exact_age | male_death_probability | male_number_of_lives | male_life_expectancy
+male_subset.rename(columns = {
+        'Year': 'year',
+        'Age': 'exact_age',
+        'mx': 'male_death_probability',
+        'lx': 'male_number_of_lives',
+        'ex': 'male_life_expectancy'
+        }, inplace = True)
+
+
+male_subset['exact_age'] = male_subset['exact_age'].str.replace('+', '')
+
 print(male_subset)
 
-print(female_subset)
+# Repeat for female
+female_subset.rename(columns = {
+        'Year': 'year',
+        'Age': 'exact_age',
+        'mx': 'female_death_probability',
+        'lx': 'female_number_of_lives',
+        'ex': 'female_life_expectancy'
+        }, inplace = True)
 
+
+female_subset['exact_age'] = female_subset['exact_age'].str.replace('+', '')
+
+print(female_subset)
 
 
