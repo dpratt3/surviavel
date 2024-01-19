@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # This script will ingest the berkley data and make it congruent to the SSA data
 
 import pandas as pd
@@ -39,4 +41,22 @@ female_susbset = female_subset[female_subset['year'] <= 2003]
 
 print(male_subset)
 print(female_subset)
+
+life_table_extended = pd.merge(male_subset, female_subset, on=['year', 'exact_age'],  how="inner")
+
+# order columns as they already are in the life table:
+column_order = [
+    'exact_age',
+    'male_death_probability',
+    'male_number_of_lives',
+    'male_life_expectancy',
+    'female_death_probability',
+    'female_number_of_lives',
+    'female_life_expectancy',
+    'year'
+]
+
+life_table_extended = life_table_extended[column_order]
+print(life_table_extended)
+
 
