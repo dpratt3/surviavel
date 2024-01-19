@@ -21,8 +21,6 @@ male_subset.rename(columns = {
 
 male_subset['exact_age'] = male_subset['exact_age'].str.replace('+', '')
 
-print(male_subset)
-
 # Repeat for female
 female_subset.rename(columns = {
         'Year': 'year',
@@ -35,6 +33,10 @@ female_subset.rename(columns = {
 
 female_subset['exact_age'] = female_subset['exact_age'].str.replace('+', '')
 
-print(female_subset)
+# Drop all years subsequent to 2003 (since we already have data)
+male_subset = male_subset[male_subset['year'] <= 2003]
+female_susbset = female_subset[female_subset['year'] <= 2003]
 
+print(male_subset)
+print(female_subset)
 
