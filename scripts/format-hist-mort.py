@@ -4,8 +4,7 @@
 import psycopg2
 from sqlalchemy import create_engine
 import pandas as pd
-
-import pandas as pd
+pd.set_option('mode.chained_assignment', None)
 
 male_data = pd.read_csv("../storage/app/data/berkley-mortality-database/male-mortality-1941-2020.csv")
 female_data = pd.read_csv("../storage/app/data/berkley-mortality-database/female-mortality-1941-2020.csv")
