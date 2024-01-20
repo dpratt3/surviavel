@@ -50,7 +50,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     setCurrentIndex((current) => (current - 1 + (data ? data.length : 1)) % (data ? data.length : 1));
   };
   
-
   const onToggleAnimation = () => {
     setIsAnimating((prev) => !prev);
   };
@@ -60,6 +59,11 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
   const handleChange = (event) => {
     setReferenceYear(parseInt(event.target.value, 10)); // Convert the value to an integer
   };
+
+  const resetParams = () => {
+    setReferenceYear(1941);
+    setCurrentIndex(0);
+  } 
 
   // Check if data is available
   if (!data || data.length === 0 || !data[currentIndex] || !data[currentIndex].year) {
@@ -129,14 +133,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         </select>
         {/* <p>Selected Year: {referenceYear}</p> */}
       </div>
-      <Plot data={frames[0].data} layout={layout} config={{ displayModeBar: false }} />
-      
+        <Plot data={frames[0].data} layout={layout} config={{ displayModeBar: false }} />     
       <div style={{ display: 'flex', margin: '10px', justifyContent: 'center' }}>
         <button onClick={onPriorFrame}>Prior Frame</button>
         <button onClick={onNextFrame}>Next Frame</button>
         <button onClick={onToggleAnimation}>
           {isAnimating ? 'Stop Continuous Animation' : 'Start Continuous Animation'}
         </button>
+        <button onClick={resetParams}> Reset </button>
       </div>
       {/* {referenceData.map((item) => (
         <div key={item.year}>
