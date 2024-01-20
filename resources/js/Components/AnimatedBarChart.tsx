@@ -1,6 +1,7 @@
 // AnimatedBarChart.tsx
 import React, { useState, useEffect } from "react";
 import Plot from "react-plotly.js";
+import FrameRateControl from "./FrameRateControl";
 
 interface AnimatedBarChartProps {
     data: { [key: number]: Record<string, string> }[] | null;
@@ -12,6 +13,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const [referenceYear, setReferenceYear] = useState(1941);
     const [referenceData, setReferenceData] = useState([]);
     const [forceRerender, setForceRerender] = useState(false)
+    const [currentFrameRate, setCurrentFrameRate] = useState<number>(20);
 
     useEffect(() => {
         let animationInterval: NodeJS.Timeout;
@@ -77,9 +79,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const resetParams = () => {
         setReferenceYear(1941);
         setCurrentIndex(0);
+        setCurrentFrameRate(20);
         setForceRerender((prev) => !prev); // Toggle forceRerender to trigger a rerender
     };
 
+    const handleFrameRateChange = (newFrameRate: number) => {
+      setCurrentFrameRate(newFrameRate);
+    };
+  
     // Check if data is available
     if (
         !data ||
@@ -183,6 +190,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
           <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
         </div>
       ))} */}
+        <FrameRateControl onChange={handleFrameRateChange} currentFrameRate = {currentFrameRate} />
         </div>
     );
 };
