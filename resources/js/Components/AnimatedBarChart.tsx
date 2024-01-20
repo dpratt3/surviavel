@@ -23,13 +23,13 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 setCurrentIndex(
                     (current) => (current + 1) % (data ? data.length : 1)
                 );
-            }, 1000 / 20); // Frames per second (equal to denominator)
+            }, 1000 / currentFrameRate); // Frames per second (equal to denominator)
         }
 
         return () => {
             clearInterval(animationInterval);
         };
-    }, [isAnimating, data]);
+    }, [isAnimating, data, currentFrameRate]);
 
     // Initial run to populate reference data
     useEffect(() => {
