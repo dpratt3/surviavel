@@ -24,7 +24,6 @@ const FrameRateControl: React.FC<FrameRateControlProps> = ({ onChange, currentFr
 
   return (
     <div>
-      <label htmlFor="frameRateInput">Frame Rate:</label>
       <input
         type="range"
         id="frameRateInput"
@@ -35,7 +34,6 @@ const FrameRateControl: React.FC<FrameRateControlProps> = ({ onChange, currentFr
         onChange={handleInputChange}
         onBlur={handleBlur}
       />
-      <span>{frameRate} FPS</span>
     </div>
   );
 };

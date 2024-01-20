@@ -12,7 +12,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const [isAnimating, setIsAnimating] = useState(false);
     const [referenceYear, setReferenceYear] = useState(1941);
     const [referenceData, setReferenceData] = useState([]);
-    const [forceRerender, setForceRerender] = useState(false)
+    const [forceRerender, setForceRerender] = useState(false);
     const [currentFrameRate, setCurrentFrameRate] = useState<number>(20);
 
     useEffect(() => {
@@ -84,9 +84,9 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     };
 
     const handleFrameRateChange = (newFrameRate: number) => {
-      setCurrentFrameRate(newFrameRate);
+        setCurrentFrameRate(newFrameRate);
     };
-  
+
     // Check if data is available
     if (
         !data ||
@@ -190,7 +190,24 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
           <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
         </div>
       ))} */}
-        <FrameRateControl onChange={handleFrameRateChange} currentFrameRate = {currentFrameRate} />
+            <div
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}
+            >
+                <label htmlFor="frameRateInput" style={{ marginRight: "8px" }}>
+                    Frame Rate:
+                </label>
+                <FrameRateControl
+                    onChange={handleFrameRateChange}
+                    currentFrameRate={currentFrameRate}
+                />
+                <span style={{ marginLeft: "8px" }}>
+                    {currentFrameRate} FPS
+                </span>
+            </div>
         </div>
     );
 };
