@@ -197,14 +197,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     justifyContent: "center",
                 }}
             >
-                <label htmlFor="frameRateInput" style={{ marginRight: "8px" }}>
+                <label htmlFor="frameRateInput" style={{ marginRight: "8px", marginBottom: "8px" }}>
                     Frame Rate:
                 </label>
                 <FrameRateControl
                     onChange={handleFrameRateChange}
                     currentFrameRate={currentFrameRate}
                 />
-                <span style={{ marginLeft: "8px" }}>
+                <span style={{ marginLeft: "8px", marginBottom: "8px" }}>
                     {currentFrameRate} FPS
                 </span>
             </div>
