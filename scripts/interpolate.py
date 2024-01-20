@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sqlalchemy import create_engine
 import re
+import warnings
 
 # Database information
 dbname = "life_tables"
@@ -61,17 +62,21 @@ colnames = [ 'male_death_probability',
              'female_life_expectancy']
 
 for colname in colnames:
+    warnings.filterwarnings("ignore", category=pd.errors.PerformanceWarning)
     columnwise = pd.DataFrame()
     for age in df['exact_age']:
         subset = df.loc[df['exact_age'] == age, ['year', colname]]
         subset = subset.set_index('year')
         columnwise[age] = subset
-        print(subset)
+        # print(subset)
+    warnings.resetwarnings()
 
+    # columnwise = columnwise.sort_index()
     print(columnwise)
 
     def splineExpander(col):
         # fit spline to column
+        col = col.sort_index()
         spline = UnivariateSpline(col.index, col.values, k=3, s=0)
         return spline
 
