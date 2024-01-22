@@ -80,6 +80,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         setReferenceYear(1941);
         setCurrentIndex(0);
         setCurrentFrameRate(20);
+        setIsAnimating(false)
         setForceRerender((prev) => !prev); // Toggle forceRerender to trigger a rerender
     };
 
@@ -131,7 +132,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const layout = {
         title: `${title} for ${Math.floor(yearData.year)}`,
         xaxis: {
-            title: "Values",
+            title: "Age",
             range: [0, 120],
         },
         yaxis: {
