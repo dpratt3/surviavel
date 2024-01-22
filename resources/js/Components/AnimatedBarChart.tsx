@@ -129,6 +129,15 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         },
     ];
 
+    // Set chart title
+    let reactiveTitle
+    if(title.endsWith("Probability")){
+        reactiveTitle = "Probability";
+    }else{
+        reactiveTitle = "Survivors";
+    }
+
+
     const layout = {
         title: `${title} for ${Math.floor(yearData.year)}`,
         xaxis: {
@@ -136,7 +145,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             range: [0, 120],
         },
         yaxis: {
-            title: "Count",
+            title: reactiveTitle,
             //range: [0, 100000]
         },
         legend: {
