@@ -65,7 +65,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
 
     const onToggleAnimation = () => {
         setIsAnimating((prev) => !prev);
-    };
+    };      
 
     const Eligibleyears = Array.from(
         { length: 2020 - 1941 + 1 },
@@ -97,6 +97,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     ) {
         return <div>Loading...</div>;
     }
+
+    // if title changes, 
 
     const yearData = data[currentIndex];
     const keys = Object.keys(yearData).filter((key) => key !== "year");
@@ -141,12 +143,11 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         var optimalRange = [0, 100000];
     }
 
-
     const layout = {
         title: `${title} for ${Math.floor(yearData.year)}`,
         xaxis: {
             title: "Age",
-            range: [0, 110],
+            range: [0, 111],
         },
         yaxis: {
             title: reactiveTitle,
