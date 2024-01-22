@@ -129,12 +129,16 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         },
     ];
 
-    // Set chart title
-    let reactiveTitle
+    // Set chart y-axis title and range
     if(title.endsWith("Probability")){
-        reactiveTitle = "Probability";
-    }else{
-        reactiveTitle = "Survivors";
+        var reactiveTitle = "Probability";
+        const deathProbs = data.map(x => Number(x[110]));
+        const maxProb = Math.max(...deathProbs);
+        const maxY = Math.ceil(maxProb * 10) / 10;
+        var optimalRange = [0, maxY];
+    }else{  
+        var reactiveTitle = "Survivors";
+        var optimalRange = [0, 100000];
     }
 
 
@@ -142,11 +146,11 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         title: `${title} for ${Math.floor(yearData.year)}`,
         xaxis: {
             title: "Age",
-            range: [0, 120],
+            range: [0, 110],
         },
         yaxis: {
             title: reactiveTitle,
-            //range: [0, 100000]
+            range: optimalRange
         },
         legend: {
             x: 0.5,
