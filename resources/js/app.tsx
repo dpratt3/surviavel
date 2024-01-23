@@ -5,7 +5,7 @@ import AnimatedBarChart from './Components/AnimatedBarChart';
 
 const App = () => {
   const [data, setData] = useState([]);
-  const [selectedOption, setSelectedOption] = useState('male-number-of-lives-interpolated');
+  const [selectedOption, setSelectedOption] = useState('female-number-of-lives-interpolated');
 
   const titleMap = {
       'female-life-expectancy-interpolated': 'Female Life Expectancy',
