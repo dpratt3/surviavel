@@ -134,9 +134,16 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     // Set chart y-axis title and range
     if(title.endsWith("Probability")){
         var reactiveTitle = "Probability";
+        // highest toward the end of life
         const deathProbs = data.map(x => Number(x[110]));
         const maxProb = Math.max(...deathProbs);
         const maxY = Math.ceil(maxProb * 10) / 10;
+        var optimalRange = [0, maxY];
+    }else if(title.endsWith("Expectancy")){
+        // highest life expectancy around age 1
+        const lifeExpectancies = data.map(x => x[1])
+        const maxLifeExp = Math.max(...lifeExpectancies)
+        const maxY = Math.ceil(maxLifeExp * 10) / 10 + 5;
         var optimalRange = [0, maxY];
     }else{  
         var reactiveTitle = "Survivors";
@@ -147,7 +154,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         title: `${title} for ${Math.floor(yearData.year)}`,
         xaxis: {
             title: "Age",
-            range: [0, 111],
+            range: [-1.5, 111.5],
         },
         yaxis: {
             title: reactiveTitle,
@@ -160,6 +167,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             traceorder: "normal", // Set the trace order in the legend
             orientation: "h", // Set the orientation to horizontal
         },
+        autosize: true
     };
 
     return (
