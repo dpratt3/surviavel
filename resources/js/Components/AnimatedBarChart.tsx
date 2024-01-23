@@ -119,6 +119,9 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     y: values,
                     type: "bar",
                     name: "Current Year",
+                    marker: {
+                        color: '#006400', // Set bar color to a darker blue-green
+                      },
                 },
                 {
                     x: lineKeys,
@@ -126,6 +129,9 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     type: "scatter",
                     mode: "lines",
                     name: "Reference Year",
+                    marker: {
+                        color: '#800020', // Set bar color to a darker blue-green
+                      },
                 },
             ],
         },

@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import AnimatedBarChart from './Components/AnimatedBarChart';
+import '../css/app.css'
 
 const App = () => {
   const [data, setData] = useState([]);
