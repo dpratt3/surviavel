@@ -179,7 +179,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     return (
         <div>
             <div>
-                <label htmlFor="yearDropdown">Select a Year:</label>
+                <label htmlFor="yearDropdown" style={{ color: "white", marginRight: "5px"}}> Select a Year:</label>
                 <select
                     id="yearDropdown"
                     value={referenceYear}

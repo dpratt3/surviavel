@@ -41,8 +41,8 @@ const App = () => {
     <div style={{ textAlign: 'center' }}>
       <h1>Surviavel</h1>
       {/* Add a dropdown menu */}
-      <label>
-        Select Series: 
+      <label style={{ color: "white"}}>
+      <span style={{ marginRight: "5px" }}>Select Series:</span> 
         <select value={selectedOption} onChange={handleDropdownChange}>
           {/* <option value="life-expectancies">Life Expectancies</option> */}
           <option value="female-life-expectancy-interpolated">Female Life Expectancy</option>
