@@ -151,6 +151,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         const maxLifeExp = Math.max(...lifeExpectancies)
         const maxY = Math.ceil(maxLifeExp * 10) / 10 + 5;
         var optimalRange = [0, maxY];
+        var reactiveTitle = "Years";
     }else{  
         var reactiveTitle = "Survivors";
         var optimalRange = [0, 100000];
