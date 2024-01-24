@@ -164,17 +164,20 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         },
         yaxis: {
             title: reactiveTitle,
-            range: optimalRange
+            range: optimalRange,
         },
         legend: {
             x: 0.5,
             xanchor: "center",
-            y: 1.125, // Set y to a value less than 1 to position the legend at the bottom
-            traceorder: "normal", // Set the trace order in the legend
-            orientation: "h", // Set the orientation to horizontal
+            y: 1.125,
+            traceorder: "normal",
+            orientation: "h",
         },
-        autosize: true
+        autosize: true,
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)'
     };
+    
 
     return (
         <div>
