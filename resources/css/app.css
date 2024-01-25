@@ -12,7 +12,8 @@ h1 {
 }
 
 body {
-  background: radial-gradient(circle, rgba(100, 50, 10, 1) 0%, rgba(160, 140, 180, 0.5) 35%, rgba(160, 110, 160, 1) 50%, rgba(120, 60, 120, 1) 100%);
+  background: radial-gradient(circle, rgba(0, 120, 255, 1) 0%, rgba(160, 140, 180, 0.5) 35%, rgba(160, 110, 160, 1) 50%, rgba(120, 60, 120, 1) 100%);
 }
+
 
 
