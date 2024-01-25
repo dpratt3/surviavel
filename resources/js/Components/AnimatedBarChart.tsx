@@ -175,11 +175,35 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             traceorder: "normal",
             orientation: "h",
         },
-        autosize: true,
+        autosize: false,
         paper_bgcolor: 'rgba(0,0,0,0)',
-        plot_bgcolor: 'rgba(0,0,0,0)'
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        // margin: {
+        //     l: 220, // left margin
+        //     r: 180, // right margin
+        //     t: 100, // top margin
+        //     b: 50,  // bottom margin
+        // },
+        responsive: true, // Enable responsive behavior
     };
     
+    // Dynamically adjust margins for cellphones (media alternative query)
+    if (window.innerWidth <= 767) {
+        layout.margin = {
+            l: 220, // left margin
+            r: 180, // right margin
+            t: 100, // top margin
+            b: 50,  // bottom margin
+        };
+    } else {
+        layout.margin = {
+            l: 50, // left margin
+            r: 25, // right margin
+            t: 100, // top margin
+            b: 50,  // bottom margin
+        };
+    }
+
 
     return (
         <div>

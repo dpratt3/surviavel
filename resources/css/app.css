@@ -46,11 +46,12 @@ body {
 }
 
 /* Media query for cellphone devices */
+/* Media query for cellphone devices */
 @media (max-width: 767px) {
   .plot-container {
-      width: 70%; /* Full width on small screens */
+      width: 90%; /* Full width on small screens */
       height: auto; /* Adjust height as needed or let it be determined by content */
-      margin: 20px auto;
+      /* margin: 0px px 0px 0px; Adjust margin values for cellphones */
       display: flex;
       align-items: center;
       justify-content: center;
