@@ -15,5 +15,29 @@ body {
   background: radial-gradient(circle, rgba(0, 120, 255, 1) 0%, rgba(160, 140, 180, 0.5) 35%, rgba(160, 110, 160, 1) 50%, rgba(120, 60, 120, 1) 100%);
 }
 
+.label {
+  color: black;
+  margin-right: 5px;
+}
+
+.dropdown {
+  padding: 8px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #3498db; /* Change this to the desired background color */
+  color: #fff; /* Change this to the desired text color */
+  cursor: pointer;
+  outline: none;
+  width: 105px;
+  text-align: center; /* Center the text horizontally */
+  opacity: 0.75;
+}
+
+/* Style for when the dropdown is open */
+.dropdown:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
 
 

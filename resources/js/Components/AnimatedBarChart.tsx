@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Plot from "react-plotly.js";
 import FrameRateControl from "./FrameRateControl";
+import "../../css/app.css"
 
 interface AnimatedBarChartProps {
     data: { [key: number]: Record<string, string> }[] | null;
@@ -183,8 +184,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     return (
         <div>
             <div>
-                <label htmlFor="yearDropdown" style={{ color: "white", marginRight: "5px"}}> Select a reference year:</label>
-                <select
+                <label htmlFor="yearDropdown" className="label" style={{ color: "white", marginRight: "5px"}}> Select a reference year:</label>
+                <select className="dropdown"
                     id="yearDropdown"
                     value={referenceYear}
                     onChange={handleChange}
