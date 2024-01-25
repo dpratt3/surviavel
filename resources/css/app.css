@@ -40,4 +40,19 @@ body {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+.plot-container {
+  /* Default styles for non-cellphone devices */
+  /* margin: 40px auto; */
+}
 
+/* Media query for cellphone devices */
+@media (max-width: 767px) {
+  .plot-container {
+      width: 70%; /* Full width on small screens */
+      height: auto; /* Adjust height as needed or let it be determined by content */
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+}

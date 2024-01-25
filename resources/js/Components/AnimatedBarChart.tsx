@@ -198,11 +198,13 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 </select>
                 {/* <p>Selected Year: {referenceYear}</p> */}
             </div>
-            <Plot
-                data={frames[0].data}
-                layout={layout}
-                config={{ displayModeBar: false }}
-            />
+            <div className="plot-container">
+                <Plot
+                    data={frames[0].data}
+                    layout={layout}
+                    config={{ displayModeBar: false }}
+                />
+            </div>
             <div
                 style={{
                     display: "flex",
