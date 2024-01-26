@@ -1,12 +1,3 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.center-container {
-    display: flex;
-    justify-content: center;
-  } */
-
 h1 {
     color: white;
 }
@@ -47,7 +38,7 @@ body {
 
 /* Media query for cellphone devices */
 /* Media query for cellphone devices */
-@media (max-width: 767px) {
+@media (max-width: 1081px) {
   .plot-container {
       width: 90%; /* Full width on small screens */
       height: auto; /* Adjust height as needed or let it be determined by content */
