@@ -4,6 +4,8 @@ h1 {
 
 body {
   background: radial-gradient(circle, rgba(0, 120, 255, 1) 0%, rgba(160, 140, 180, 0.5) 35%, rgba(160, 110, 160, 1) 50%, rgba(120, 60, 120, 1) 100%);
+  background-size: 100%;
+  background-position: center;
 }
 
 .label {
@@ -39,8 +41,11 @@ body {
 /* Media query for cellphone devices */
 @media (max-width: 1081px) {
   body {
-    background: radial-gradient(circle, rgba(0, 120, 255, 1) 0%, rgba(160, 140, 180, 0.5) 35%, rgba(160, 110, 160, 1) 50%, rgba(120, 60, 120, 1) 100%);
-  }
+    background: radial-gradient(circle at center, rgba(0, 120, 255, 1) 0%, rgba(160, 140, 180, 0.5) 35%, rgba(160, 110, 160, 1) 50%, rgba(120, 60, 120, 1) 100%);
+    background-size: 500%;
+    background-position: center;
+}
+
   .plot-container {
       width: 90%; /* Full width on small screens */
       height: auto; /* Adjust height as needed or let it be determined by content */
