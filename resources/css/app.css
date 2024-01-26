@@ -37,12 +37,14 @@ body {
 }
 
 /* Media query for cellphone devices */
-/* Media query for cellphone devices */
 @media (max-width: 1081px) {
+  body {
+    background: radial-gradient(circle, rgba(0, 120, 255, 1) 0%, rgba(160, 140, 180, 0.5) 35%, rgba(160, 110, 160, 1) 50%, rgba(120, 60, 120, 1) 100%);
+  }
   .plot-container {
       width: 90%; /* Full width on small screens */
       height: auto; /* Adjust height as needed or let it be determined by content */
-      margin: 0px px 0px 0px; /*Adjust margin values for cellphones*/
+      margin: 0px 0px 0px 0px; /*Adjust margin values for cellphones*/
       display: flex;
       align-items: center;
       justify-content: center;
