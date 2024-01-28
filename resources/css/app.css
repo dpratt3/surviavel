@@ -56,3 +56,12 @@ body {
       justify-content: center;
   }
 }
+
+
+.play-button{
+  background-color: green;
+}
+
+.pause-button{
+  background-color: red;
+}

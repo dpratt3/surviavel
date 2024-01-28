@@ -238,7 +238,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             >
                 <button onClick={onPriorFrame}>Prior Frame</button>
                 <button onClick={onNextFrame}>Next Frame</button>
-                <button onClick={onToggleAnimation}>
+                <button className={isAnimating ? "pause-button" : "play-button"} onClick={onToggleAnimation}>
                     {isAnimating
                         ? "Stop Continuous Animation"
                         : "Start Continuous Animation"}
