@@ -16,6 +16,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const [referenceData, setReferenceData] = useState([]);
     const [forceRerender, setForceRerender] = useState(false);
     const [currentFrameRate, setCurrentFrameRate] = useState<number>(20);
+    const [minAge, setMinAge] = useState(0);
+    const [maxAge, setMaxAge] = useState(110);
 
     useEffect(() => {
         let animationInterval: NodeJS.Timeout;
@@ -164,7 +166,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         dragmode: 'false', // Set drag mode to pan to disable zoom
         xaxis: {
             title: "Age",
-            range: [-1.5, 111.5],
+            range: [minAge - 1.5, maxAge + 1.5],
         },
         yaxis: {
             title: reactiveTitle,
@@ -199,7 +201,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             b: 50,  // bottom margin
         };
     }
-
 
     return (
         <div>
@@ -240,7 +241,12 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                         : "Start Continuous Animation"} */}
                 </button>
                 <button onClick={resetParams}> Reset </button>
-                <ZoomButton />
+                <ZoomButton         
+                    minAge={minAge}
+                    maxAge={maxAge}
+                    onMinAgeChange={setMinAge}
+                    onMaxAgeChange={setMaxAge}
+                />
             </div>
             <div
                 style={{
