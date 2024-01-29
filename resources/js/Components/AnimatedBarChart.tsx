@@ -158,8 +158,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         var reactiveTitle = "Survivors";
         var optimalRange = [0, 100000];
     }
-
-    var layout = {
+    
+    const [layout, setLayout] = useState({
         title: `${title} for ${Math.floor(yearData.year)}`,
         dragmode: 'false', // Set drag mode to pan to disable zoom
         xaxis: {
@@ -187,7 +187,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         //     b: 50,  // bottom margin
         // },
         responsive: true, // Enable responsive behavior
-    };
+    });
     
     // Dynamically adjust margins for cellphones (media alternative query)
     if (window.innerWidth <= 767) {
@@ -246,7 +246,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                         : "Start Continuous Animation"} */}
                 </button>
                 <button onClick={resetParams}> Reset </button>
-                <ZoomButton />
+                <ZoomButton layout={layout} updateLayout={setLayout}/>
             </div>
             {/* {referenceData.map((item) => (
         <div key={item.year}>

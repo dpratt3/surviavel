@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ZoomButton = () => {
+const ZoomButton = ( {layout, updateLayout} ) => {
     const [minAge, setMinAge] = useState(0);
     const [maxAge, setMaxAge] = useState(110);
     const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -12,11 +12,18 @@ const ZoomButton = () => {
     const resetParams = () => {
         // Perform the zoom logic with minAge and maxAge values
         console.log('Zooming with min age:', minAge, 'and max age:', maxAge);
+        
+        const updatedLayout = { ...layout };
+        layout.xaxis.range = [minAge, maxAge]
+
+        // Update the layout using the passed function
+        updateLayout(updatedLayout);
 
         // Reset the dropdown values and hide the dropdown
-        setMinAge('');
-        setMaxAge('');
+        setMinAge(minAge);
+        setMaxAge(maxAge);
         setDropdownVisible(false);
+        
     };
 
     return (
