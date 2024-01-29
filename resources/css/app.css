@@ -61,7 +61,8 @@ body {
 .play-button, .pause-button {
   background-color: white;
   position: relative;
-  width: 150px; /* Adjust the width to your desired value for a circular appearance */
+  width: 50px; /* Adjust the width to your desired value for a circular appearance */
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
