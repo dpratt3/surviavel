@@ -189,6 +189,13 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         responsive: true, // Enable responsive behavior
     });
     
+    useEffect(() => {
+        setLayout((prevLayout) => ({
+          ...prevLayout,
+          title: `${title} for ${Math.floor(yearData.year)}`,
+        }));
+      }, [title, yearData.year]);
+
     // Dynamically adjust margins for cellphones (media alternative query)
     if (window.innerWidth <= 767) {
         layout.margin = {

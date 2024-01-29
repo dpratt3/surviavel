@@ -14,7 +14,7 @@ const ZoomButton = ( {layout, updateLayout} ) => {
         console.log('Zooming with min age:', minAge, 'and max age:', maxAge);
         
         const updatedLayout = { ...layout };
-        layout.xaxis.range = [minAge, maxAge]
+        layout.xaxis.range = [minAge - 1.5, maxAge + 1.5]
 
         // Update the layout using the passed function
         updateLayout(updatedLayout);
