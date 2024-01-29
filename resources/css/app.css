@@ -58,9 +58,28 @@ body {
 }
 
 
-.play-button{
-  background-color: green;
+.play-button {
+  background-color: white;
+  position: relative;
+  width: 150px; /* Adjust the width to your desired value for a circular appearance */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
 }
+
+.play-button::after {
+  content: '\25B6'; /* Unicode character for a rightward-facing arrow */
+  font-size: 24px; /* Adjust the font size as needed */
+  color: green; /* Color of the arrow */
+  line-height: 50px;
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 
 .pause-button{
   background-color: red;
