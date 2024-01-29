@@ -58,7 +58,7 @@ body {
 }
 
 
-.play-button {
+.play-button, .pause-button {
   background-color: white;
   position: relative;
   width: 150px; /* Adjust the width to your desired value for a circular appearance */
@@ -67,6 +67,7 @@ body {
   justify-content: center;
   text-align: center;
   cursor: pointer;
+
 }
 
 .play-button::after {
@@ -80,7 +81,13 @@ body {
   transform: translate(-50%, -50%);
 }
 
-
-.pause-button{
-  background-color: red;
+.pause-button::after {
+  content: '\II'; /* Unicode character for a pause symbol */
+  font-size: 24px; /* Adjust the font size as needed */
+  font-weight: bold; /* Make the symbol bold */
+  color: rebeccapurple; /* Color of the pause symbol */
+  position: absolute;
+  top: 45%;
+  left: 48%;
+  transform: translate(-50%, -50%);
 }
