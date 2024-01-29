@@ -258,7 +258,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 }}
             >
                 <label htmlFor="frameRateInput" style={{ marginRight: "8px", marginBottom: "8px" }}>
-                    Frame Rate:
+                    Frame rate:
                 </label>
                 <FrameRateControl
                     onChange={handleFrameRateChange}
