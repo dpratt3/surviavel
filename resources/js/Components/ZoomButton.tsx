@@ -14,8 +14,8 @@ const ZoomButton = () => {
         console.log('Zooming with min age:', minAge, 'and max age:', maxAge);
 
         // Reset the dropdown values and hide the dropdown
-        setMinAge('');
-        setMaxAge('');
+        setMinAge(minAge);
+        setMaxAge(maxAge);
         setDropdownVisible(false);
     };
 
