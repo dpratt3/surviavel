@@ -161,12 +161,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         var optimalRange = [0, 100000];
     }
 
+    console.log(maxAge, "<-----------------------------")
+
     var layout = {
         title: `${title} for ${Math.floor(yearData.year)}`,
         dragmode: 'false', // Set drag mode to pan to disable zoom
         xaxis: {
             title: "Age",
-            range: [minAge - 1.5, maxAge + 1.5],
+            range: [Number(minAge) - 1.5, Number(maxAge) + 1.5],
         },
         yaxis: {
             title: reactiveTitle,
@@ -185,6 +187,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         responsive: true, // Enable responsive behavior
     };
     
+    console.log(layout.xaxis)
     // Dynamically adjust margins for cellphones (media alternative query)
     if (window.innerWidth <= 767) {
         layout.margin = {
