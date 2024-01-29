@@ -180,12 +180,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         autosize: false,
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
-        // margin: {
-        //     l: 220, // left margin
-        //     r: 180, // right margin
-        //     t: 100, // top margin
-        //     b: 50,  // bottom margin
-        // },
         responsive: true, // Enable responsive behavior
     };
     
@@ -248,11 +242,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 <button onClick={resetParams}> Reset </button>
                 <ZoomButton />
             </div>
-            {/* {referenceData.map((item) => (
-        <div key={item.year}>
-          <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
-        </div>
-      ))} */}
             <div
                 style={{
                     display: "flex",
