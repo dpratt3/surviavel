@@ -20,6 +20,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         let animationInterval: NodeJS.Timeout;
 
         if (isAnimating) {
+            layout.dragmode= 'pan', // Set drag mode to pan to disable zoom
             animationInterval = setInterval(() => {
                 setCurrentIndex(
                     (current) => (current + 1) % (data ? data.length : 1)
@@ -158,7 +159,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         var optimalRange = [0, 100000];
     }
 
-    const layout = {
+    var layout = {
         title: `${title} for ${Math.floor(yearData.year)}`,
         xaxis: {
             title: "Age",
