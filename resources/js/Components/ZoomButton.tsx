@@ -30,7 +30,16 @@ const ZoomButton = ( {layout, updateLayout} ) => {
         <div style={{ position: 'relative', display: 'inline-block' }}>
             <button style={{ height: "50px" }} onClick={toggleDropdown}>Zoom</button>
             {dropdownVisible && (
-                <div className="dropdown" style={{ position: 'absolute', top: '100%', left: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'purple'}}>
+                <div className="dropdown"  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: '50%', // Set left to 50%
+                    transform: 'translateX(-50%)', // Center the dropdown horizontally
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    backgroundColor: 'purple',
+                  }}>
                     <label style={{ width: '100px' }}>
                         Min age:
                         <input style={{ width: '50px', marginTop: '5px' }} type="text" value={minAge} onChange={(e) => setMinAge(e.target.value)} />
