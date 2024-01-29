@@ -2,10 +2,18 @@ h1 {
     color: white;
 }
 
-body {
+@media (min-width: 768px) {
+  /* Styles for regular view */
+  body{
     background: radial-gradient(circle, #87CEEB, #1E90FF); /* Light blue gradient */
     background-size: cover;
     background-position: center;
+  }
+
+  .plot-container {
+    /* Default styles for non-cellphone devices */
+    /* margin: 40px auto; */
+  }
 }
 
 .label {
@@ -33,13 +41,8 @@ body {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.plot-container {
-  /* Default styles for non-cellphone devices */
-  /* margin: 40px auto; */
-}
-
 /* Media query for cellphone devices */
-@media (max-width: 1081px) {
+@media (max-width: 767px) {
   body {
     background: radial-gradient(circle, #87CEEB, #1E90FF); /* Light blue gradient */
     background-position: center;
@@ -57,7 +60,6 @@ body {
   }
 }
 
-
 .play-button, .pause-button {
   background-color: white;
   position: relative;
@@ -68,7 +70,6 @@ body {
   justify-content: center;
   text-align: center;
   cursor: pointer;
-
 }
 
 .play-button::after {
