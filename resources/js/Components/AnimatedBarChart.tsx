@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Plot from "react-plotly.js";
 import FrameRateControl from "./FrameRateControl";
+import ZoomButton from "./ZoomButton";
 import "../../css/app.css"
 
 interface AnimatedBarChartProps {
@@ -245,6 +246,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                         : "Start Continuous Animation"} */}
                 </button>
                 <button onClick={resetParams}> Reset </button>
+                <ZoomButton />
             </div>
             {/* {referenceData.map((item) => (
         <div key={item.year}>
