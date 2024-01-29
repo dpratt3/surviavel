@@ -83,7 +83,7 @@ body {
 
 .pause-button::after {
   content: '\II'; /* Unicode character for a pause symbol */
-  font-size: 24px; /* Adjust the font size as needed */
+  font-size: 28px; /* Adjust the font size as needed */
   font-weight: bold; /* Make the symbol bold */
   color: rebeccapurple; /* Color of the pause symbol */
   position: absolute;
