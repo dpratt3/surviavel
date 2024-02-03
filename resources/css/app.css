@@ -21,20 +21,26 @@ h1 {
   margin-right: 5px;
 }
 
+.dropdown:hover {
+  transform: scale(1.05);
+  border-color: orange;
+}
+
 .dropdown {
   padding: 8px;
   font-size: 12px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  background-color: #3498db; /* Change this to the desired background color */
-  color: #fff; /* Change this to the desired text color */
+  background: radial-gradient(circle, #87CEEB, #191970); /* Sky blue to Midnight blue gradient */
+  color: #fff;
   cursor: pointer;
   outline: none;
   width: 105px;
-  text-align: center; /* Center the text horizontally */
+  text-align: center;
   opacity: 0.75;
+  font-family: "Comfortaa"; 
+  font-weight: bold; /* Use 'bold' without quotes */
 }
-
 /* Style for when the dropdown is open */
 .dropdown:focus {
   border-color: #007bff;
@@ -88,15 +94,4 @@ h1 {
   margin-bottom: 10px;
   letter-spacing: 8.5px;
   font-family: "Comfortaa", sans-serif; /* Specify the font-family */
-}
-
-.dropdown {
-  font-family: "Comfortaa"; 
-  font-size: 16;
-  font-weight: "bold"; 
-}
-
-.dropdown:hover {
-  transform: scale(1.05);
-  border-color: orange;
 }
