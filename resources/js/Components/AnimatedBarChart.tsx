@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import Plot from "react-plotly.js";
 import FrameRateControl from "./FrameRateControl";
 import ZoomButton from "./ZoomButton";
-import "../../css/app.css"
+import "../../css/app.css";
+import { FaBackwardStep } from "react-icons/fa6";
 
 interface AnimatedBarChartProps {
     data: { [key: number]: Record<string, string> }[] | null;
@@ -236,7 +237,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     justifyContent: "center",
                 }}
             >
-                <button onClick={onPriorFrame}>Prior Frame</button>
+                      <FaBackwardStep onClick={onPriorFrame} />
+                {/* <button onClick={onPriorFrame}>Prior Frame</button> */}
                 <button onClick={onNextFrame}>Next Frame</button>
                 <button className={isAnimating ? "pause-button" : "play-button"} onClick={onToggleAnimation}>
                     {/* {isAnimating
