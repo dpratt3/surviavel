@@ -79,9 +79,32 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange }) => {
                             onChange={(e) => setNewMaxAge(e.target.value)}
                         />
                     </label>
-                    <button style={{ width: '60px', marginTop: '5px' }} onClick={resetParams}>
+                    <button
+                        style={{
+                            width: '60px',
+                            padding: '8px',
+                            fontSize: '1rem',
+                            color: 'white',
+                            cursor: 'pointer',
+                            background: "linear-gradient(skyblue, deepskyblue)",
+                            border: '2px solid #FF007B', /* Border color similar to the gradient */
+                            borderRadius: '10px',
+                            transition: 'transform 0.3s ease, border-color 0.3s ease',
+                            marginTop: '3px'
+                        }}
+                        onClick={resetParams}
+                        onMouseOver={(e) => {
+                            e.currentTarget.style.transform = 'scale(1.1)';
+                            e.currentTarget.style.borderColor = 'orange';
+                        }}
+                        onMouseOut={(e) => {
+                            e.currentTarget.style.transform = 'scale(1)';
+                            e.currentTarget.style.borderColor = '#FF007B';
+                        }}
+                    >
                         Apply
                     </button>
+
                 </div>
             )}
         </div>
