@@ -6,7 +6,6 @@ import ZoomButton from "./ZoomButton";
 import "../../css/app.css";
 import { FaBackwardStep, FaForwardStep, FaPlay, FaStop } from "react-icons/fa6";
 import { GrPowerReset } from "react-icons/gr";
-import { FaMagnifyingGlass } from "react-icons/fa6";
 
 interface AnimatedBarChartProps {
     data: { [key: number]: Record<string, string> }[] | null;
@@ -379,7 +378,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     onChange={handleFrameRateChange}
                     currentFrameRate={currentFrameRate}
                 />
-                <span style={{ marginLeft: "8px", marginBottom: "8px" }}>
+                <span style={{ marginLeft: "8px", marginBottom: "8px", color: "white" }}>
                     {currentFrameRate} FPS
                 </span>
             </div>
