@@ -254,8 +254,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                             }}
                             className="hover-effect"
                             onMouseOver={(e) => {
-                                e.currentTarget.style.transform = "scale(1.05)";
-                                e.currentTarget.style.borderColor = "dodgerblue";
+                                e.currentTarget.style.transform = "scale(1.15)";
+                                e.currentTarget.style.borderColor = "orange";
                             }}
                             onMouseOut={(e) => {
                                 e.currentTarget.style.transform = "scale(1)";
@@ -276,8 +276,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                             }}
                             className="hover-effect"
                             onMouseOver={(e) => {
-                                e.currentTarget.style.transform = "scale(1.05)";
-                                e.currentTarget.style.borderColor = "dodgerblue";
+                                e.currentTarget.style.transform = "scale(1.15)";
+                                e.currentTarget.style.borderColor = "orange";
                             }}
                             onMouseOut={(e) => {
                                 e.currentTarget.style.transform = "scale(1)";
@@ -301,8 +301,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     }}
                     className="hover-effect"
                     onMouseOver={(e) => {
-                        e.currentTarget.style.transform = "scale(1.05)";
-                        e.currentTarget.style.borderColor = "dodgerblue";
+                        e.currentTarget.style.transform = "scale(1.15)";
+                        e.currentTarget.style.borderColor = "orange";
                     }}
                     onMouseOut={(e) => {
                         e.currentTarget.style.transform = "scale(1)";
@@ -326,8 +326,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     }}
                     className="hover-effect"
                     onMouseOver={(e) => {
-                        e.currentTarget.style.transform = "scale(1.05)";
-                        e.currentTarget.style.borderColor = "dodgerblue";
+                        e.currentTarget.style.transform = "scale(1.15)";
+                        e.currentTarget.style.borderColor = "orange";
                     }}
                     onMouseOut={(e) => {
                         e.currentTarget.style.transform = "scale(1)";
@@ -357,8 +357,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     }}
                     className="hover-effect"
                     onMouseOver={(e) => {
-                        e.currentTarget.style.transform = "scale(1.05) rotate(-180deg) rotateX(180deg)";
-                        e.currentTarget.style.borderColor = "dodgerblue";
+                        e.currentTarget.style.transform = "scale(1.15) rotate(-180deg) rotateX(180deg)";
+                        e.currentTarget.style.borderColor = "orange";
                     }}
                     onMouseOut={(e) => {
                         e.currentTarget.style.transform = "scale(1) rotate(-180deg) rotateX(180deg)";

@@ -37,8 +37,8 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange }) => {
                 }}
                 className="hover-effect"
                 onMouseOver={(e) => {
-                    e.currentTarget.style.transform = "scale(1.05)";
-                    e.currentTarget.style.borderColor = "dodgerblue";
+                    e.currentTarget.style.transform = "scale(1.15)";
+                    e.currentTarget.style.borderColor = "orange";
                 }}
                 onMouseOut={(e) => {
                     e.currentTarget.style.transform = "scale(1)";
