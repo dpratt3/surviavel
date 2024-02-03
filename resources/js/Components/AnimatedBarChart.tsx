@@ -169,7 +169,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         },
 
         title: {
-            text: `<b>${title} for ${Math.floor(yearData.year)}</b>`,
+            text: `<b>${title} in ${Math.floor(yearData.year)}</b>`,
             font: {
                 color: 'white',
                 size: 24,
