@@ -83,20 +83,15 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
-.pause-button::after {
-  content: '\II'; /* Unicode character for a pause symbol */
-  font-size: 28px; /* Adjust the font size as needed */
-  font-weight: bold; /* Make the symbol bold */
-  color: rebeccapurple; /* Color of the pause symbol */
-  position: absolute;
-  top: 45%;
-  left: 48%;
-  transform: translate(-50%, -50%);
-}
-
 h1 {
   font-size: 48px; /* Adjust the font size as needed */
   margin-bottom: 10px;
-  letter-spacing: 7px;
+  letter-spacing: 8.5px;
   font-family: "Comfortaa", sans-serif; /* Specify the font-family */
+}
+
+.dropdown {
+  font-family: "Comfortaa"; 
+  font-size: 16;
+  font-weight: "bold"; 
 }
