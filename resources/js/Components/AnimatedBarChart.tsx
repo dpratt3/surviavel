@@ -4,7 +4,7 @@ import Plot from "react-plotly.js";
 import FrameRateControl from "./FrameRateControl";
 import ZoomButton from "./ZoomButton";
 import "../../css/app.css";
-import { FaBackwardStep, FaForwardStep, FaPlay } from "react-icons/fa6";
+import { FaBackwardStep, FaForwardStep, FaPlay, FaStop } from "react-icons/fa6";
 
 interface AnimatedBarChartProps {
     data: { [key: number]: Record<string, string> }[] | null;
@@ -249,11 +249,30 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     color: "white",
                     cursor: "pointer",
                 }} />
-                <button className={isAnimating ? "pause-button" : "play-button"} onClick={onToggleAnimation}>
-                    {/* {isAnimating
-                        ? "Stop Continuous Animation"
-                        : "Start Continuous Animation"} */}
-                </button>
+                <div className="min-h-screen bg-sky-blue p-8 flex justify-center items-center">
+                    {isAnimating ? (
+                        // Display FaStop if isAnimating is true
+                        <FaStop
+                            onClick={onToggleAnimation}
+                            style={{
+                                fontSize: "3rem", // Adjust the font size as needed
+                                color: "white",
+                                cursor: "pointer",
+                            }}
+                        />
+                    ) : (
+                        // Display FaPlay if isAnimating is false
+                        <FaPlay
+                            onClick={onToggleAnimation}
+                            style={{
+                                fontSize: "3rem", // Adjust the font size as needed
+                                color: "white",
+                                cursor: "pointer",
+                            }}
+                        />
+                    )}
+                    {/* Other content */}
+                </div>
                 <button onClick={resetParams}> Reset </button>
                 <ZoomButton
                     minAge={minAge}
