@@ -97,5 +97,6 @@ h1 {
 h1 {
   font-size: 48px; /* Adjust the font size as needed */
   margin-bottom: 10px;
-  letter-spacing: 7px
+  letter-spacing: 7px;
+  font-family: "Comfortaa", sans-serif; /* Specify the font-family */
 }
