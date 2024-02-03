@@ -17,7 +17,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const [isAnimating, setIsAnimating] = useState(false);
     const [referenceYear, setReferenceYear] = useState(1941);
     const [referenceData, setReferenceData] = useState([]);
-    const [forceRerender, setForceRerender] = useState(false);
     const [currentFrameRate, setCurrentFrameRate] = useState<number>(20);
     const [minAge, setMinAge] = useState(0);
     const [maxAge, setMaxAge] = useState(110);
