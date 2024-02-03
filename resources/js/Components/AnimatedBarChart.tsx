@@ -144,7 +144,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
 
     // Set chart y-axis title and range
     if (title.endsWith("Probability")) {
-        var reactiveTitle = "Probability";
+        var reactiveTitle = "<b>Probability<b>";
         // highest toward the end of life
         const deathProbs = data.map(x => Number(x[110]));
         const maxProb = Math.max(...deathProbs);
@@ -156,9 +156,9 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         const maxLifeExp = Math.max(...lifeExpectancies)
         const maxY = Math.ceil(maxLifeExp * 10) / 10 + 5;
         var optimalRange = [0, maxY];
-        var reactiveTitle = "Years";
+        var reactiveTitle = "<b>Years<b>";
     } else {
-        var reactiveTitle = "Survivors";
+        var reactiveTitle = "<b>Survivors<b>";
         var optimalRange = [0, 100000];
     }
 
@@ -172,11 +172,11 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         title: {
             text: `<b>${title} for ${Math.floor(yearData.year)}</b>`,
             font: {
-              color: 'white',
-              size: 24,
-              family: 'Arial', // Adjust font family if needed
+                color: 'white',
+                size: 24,
+                family: 'Arial', // Adjust font family if needed
             },
-          },
+        },
 
         titlefont: {
             color: 'white',
@@ -187,21 +187,36 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         dragmode: 'false', // Set drag mode to pan to disable zoom
 
         xaxis: {
-            title: "Age",
-            range: [Number(minAge) - 1.5, Number(maxAge) + 1.5],
+            title: {
+                text: "<b>Age</b>",
+                font: {
+                    color: 'white',
+                    size: 18, // Adjust the size of the x-axis label
+                    family: 'Arial', // Adjust font family if needed
+                    weight: 'bold', // Make the x-axis title bold
+                },
+            },
             tickfont: {
                 color: 'white',
-                size: 18
-              },
+                size: 18,
+            },
         },
 
         yaxis: {
-            title: reactiveTitle,
+            title: {
+                text: reactiveTitle,
+                font: {
+                    color: 'white',
+                    size: 18, // Adjust the size of the y-axis label
+                    family: 'Arial', // Adjust font family if needed
+                    weight: 'bold', // Make the y-axis title bold
+                },
+            },
             range: optimalRange,
             tickfont: {
                 color: 'white',
-                size: 18
-              },
+                size: 18,
+            },
         },
 
         legend: {
