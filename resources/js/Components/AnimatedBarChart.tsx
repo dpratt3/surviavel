@@ -167,17 +167,36 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     var layout = {
         font: {
             color: 'white', // Set text color to white
-          },
+        },
+
         title: `${title} for ${Math.floor(yearData.year)}`,
+
+        titlefont: {
+            color: 'white',
+            size: 24, // Adjust title font size as needed
+            bold: true, // Make the title bold
+        },
+
         dragmode: 'false', // Set drag mode to pan to disable zoom
+
         xaxis: {
             title: "Age",
             range: [Number(minAge) - 1.5, Number(maxAge) + 1.5],
+            tickfont: {
+                color: 'white',
+                size: 18
+              },
         },
+
         yaxis: {
             title: reactiveTitle,
             range: optimalRange,
+            tickfont: {
+                color: 'white',
+                size: 18
+              },
         },
+
         legend: {
             x: 0.5,
             xanchor: "center",
@@ -185,7 +204,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             traceorder: "normal",
             orientation: "h",
         },
-        autosize: false,
+
+        autosize: true,
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
         responsive: true, // Enable responsive behavior
@@ -226,7 +246,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 </select>
                 {/* <p>Selected Year: {referenceYear}</p> */}
             </div>
-            <div className="plot-container" style={{marginBottom: "20px"}}>
+            <div className="plot-container" style={{ marginBottom: "20px" }}>
                 <Plot
                     data={frames[0].data}
                     layout={layout}
@@ -381,7 +401,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 <label htmlFor="frameRateInput" style={{ marginRight: "8px", marginBottom: "8px", color: "white" }}>
                     Frame rate:
                 </label>
-                <FrameRateControl 
+                <FrameRateControl
                     onChange={handleFrameRateChange}
                     currentFrameRate={currentFrameRate}
                 />
