@@ -193,7 +193,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     color: 'white',
                     size: 18, // Adjust the size of the x-axis label
                     family: 'Arial', // Adjust font family if needed
-                    weight: 'bold', // Make the x-axis title bold
                 },
             },
             tickfont: {
@@ -217,6 +216,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 color: 'white',
                 size: 18,
             },
+            automargin: true, // Allow automatic margin adjustment
         },
 
         legend: {
