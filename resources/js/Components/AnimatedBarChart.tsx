@@ -165,6 +165,9 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     console.log(maxAge, "<-----------------------------")
 
     var layout = {
+        font: {
+            color: 'white', // Set text color to white
+          },
         title: `${title} for ${Math.floor(yearData.year)}`,
         dragmode: 'false', // Set drag mode to pan to disable zoom
         xaxis: {
