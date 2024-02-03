@@ -31,8 +31,21 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange }) => {
                     color: "white",
                     cursor: "pointer",
                     transform: "rotate(-180deg) rotateX(180deg)", // Rotate and flip
+                    background: "linear-gradient(skyblue, deepskyblue)",
+                    border: "2px solid skyblue",
+                    marginRight: "10px"
+                }}
+                className="hover-effect"
+                onMouseOver={(e) => {
+                    e.currentTarget.style.transform = "scale(1.05)";
+                    e.currentTarget.style.borderColor = "dodgerblue";
+                }}
+                onMouseOut={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                    e.currentTarget.style.borderColor = "skyblue";
                 }}
             />
+
             {dropdownVisible && (
                 <div
                     className="dropdown"

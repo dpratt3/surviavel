@@ -248,6 +248,18 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                                 fontSize: "3rem", // Adjust the font size as needed
                                 color: "white",
                                 cursor: "pointer",
+                                background: "linear-gradient(skyblue, deepskyblue)",
+                                border: "2px solid skyblue",
+                                transition: "transform 0.3s ease, border-color 0.3s ease",
+                            }}
+                            className="hover-effect"
+                            onMouseOver={(e) => {
+                                e.currentTarget.style.transform = "scale(1.05)";
+                                e.currentTarget.style.borderColor = "dodgerblue";
+                            }}
+                            onMouseOut={(e) => {
+                                e.currentTarget.style.transform = "scale(1)";
+                                e.currentTarget.style.borderColor = "skyblue";
                             }}
                         />
                     ) : (
@@ -258,25 +270,71 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                                 fontSize: "3rem", // Adjust the font size as needed
                                 color: "white",
                                 cursor: "pointer",
+                                background: "linear-gradient(skyblue, deepskyblue)",
+                                border: "2px solid skyblue",
+                                transition: "transform 0.3s ease, border-color 0.3s ease",
+                            }}
+                            className="hover-effect"
+                            onMouseOver={(e) => {
+                                e.currentTarget.style.transform = "scale(1.05)";
+                                e.currentTarget.style.borderColor = "dodgerblue";
+                            }}
+                            onMouseOut={(e) => {
+                                e.currentTarget.style.transform = "scale(1)";
+                                e.currentTarget.style.borderColor = "skyblue";
                             }}
                         />
                     )}
-                    {/* Other content */}
                 </div>
-                <FaBackwardStep onClick={onPriorFrame} style={{
-                    fontSize: "3rem", // Adjust the font size as needed
-                    color: "white",
-                    cursor: "pointer",
-                    marginRight: "10px"
-                }} />
+
+
+                <FaBackwardStep
+                    onClick={onPriorFrame}
+                    style={{
+                        fontSize: "3rem", // Adjust the font size as needed
+                        color: "white",
+                        cursor: "pointer",
+                        marginRight: "10px",
+                        background: "linear-gradient(skyblue, deepskyblue)",
+                        border: "2px solid skyblue",
+                        transition: "transform 0.3s ease, border-color 0.3s ease",
+                    }}
+                    className="hover-effect"
+                    onMouseOver={(e) => {
+                        e.currentTarget.style.transform = "scale(1.05)";
+                        e.currentTarget.style.borderColor = "dodgerblue";
+                    }}
+                    onMouseOut={(e) => {
+                        e.currentTarget.style.transform = "scale(1)";
+                        e.currentTarget.style.borderColor = "skyblue";
+                    }}
+                />
+
+
                 {/* <button onClick={onPriorFrame}>Prior Frame</button> */}
                 {/* <button onClick={onNextFrame}>Next Frame</button> */}
-                <FaForwardStep onClick={onPriorFrame} style={{
-                    fontSize: "3rem", // Adjust the font size as needed
-                    color: "white",
-                    cursor: "pointer",
-                    marginRight: "10px"
-                }} />
+                <FaForwardStep
+                    onClick={onPriorFrame}
+                    style={{
+                        fontSize: "3rem",
+                        color: "white",
+                        cursor: "pointer",
+                        marginRight: "10px",
+                        background: "linear-gradient(skyblue, deepskyblue)",
+                        border: "2px solid skyblue",
+                        transition: "transform 0.3s ease, border-color 0.3s ease",
+                    }}
+                    className="hover-effect"
+                    onMouseOver={(e) => {
+                        e.currentTarget.style.transform = "scale(1.05)";
+                        e.currentTarget.style.borderColor = "dodgerblue";
+                    }}
+                    onMouseOut={(e) => {
+                        e.currentTarget.style.transform = "scale(1)";
+                        e.currentTarget.style.borderColor = "skyblue";
+                    }}
+                />
+
 
                 {/* <button onClick={resetParams}> Reset </button> */}
                 <GrPowerReset
@@ -286,8 +344,22 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                         color: "white",
                         cursor: "pointer",
                         transform: "rotate(-180deg) rotateX(180deg)", // Flip 180 degrees on the vertical axis
+                        background: "linear-gradient(skyblue, deepskyblue)",
+                        border: "2px solid skyblue",
+                        transition: "transform 0.3s ease, border-color 0.3s ease",
+                        marginRight: "10px"
+                    }}
+                    className="hover-effect"
+                    onMouseOver={(e) => {
+                        e.currentTarget.style.transform = "scale(1.05)";
+                        e.currentTarget.style.borderColor = "dodgerblue";
+                    }}
+                    onMouseOut={(e) => {
+                        e.currentTarget.style.transform = "scale(1)";
+                        e.currentTarget.style.borderColor = "skyblue";
                     }}
                 />
+
                 <ZoomButton
                     minAge={minAge}
                     maxAge={maxAge}
