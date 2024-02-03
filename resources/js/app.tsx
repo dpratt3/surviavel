@@ -9,13 +9,13 @@ const App = () => {
   const [selectedOption, setSelectedOption] = useState('female-number-of-lives-interpolated');
 
   const titleMap = {
-      'female-life-expectancy-interpolated': 'Female Life Expectancy',
-      'female-death-probability-interpolated': 'Female Death Probability',
-      'female-number-of-lives-interpolated': 'Female Number of Lives',
-      'male-life-expectancy-interpolated': 'Male Life Expectancy',
-      'male-number-of-lives-interpolated': 'Male Number of Lives',
-      'male-death-probability-interpolated': 'Male Death Probability'
-    };
+    'female-life-expectancy-interpolated': 'Female Life Expectancy',
+    'female-death-probability-interpolated': 'Female Death Probability',
+    'female-number-of-lives-interpolated': 'Female Number of Lives',
+    'male-life-expectancy-interpolated': 'Male Life Expectancy',
+    'male-number-of-lives-interpolated': 'Male Number of Lives',
+    'male-death-probability-interpolated': 'Male Death Probability'
+  };
 
   const title = titleMap[selectedOption]
 
@@ -27,7 +27,7 @@ const App = () => {
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
-      } 
+      }
     };
 
     fetchData();
@@ -42,9 +42,9 @@ const App = () => {
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap"></link>
       <h1>Surviavel</h1>
       {/* Add a dropdown menu */}
-      <label style={{ color: "white"}}>
-      <span style={{ marginRight: "5px" }}>Select a series:</span> 
-        <select className="dropdown" style={{width:"175px"}}value={selectedOption} onChange={handleDropdownChange}>
+      <label style={{ color: "white" }}>
+        <span style={{ marginRight: "5px", fontFamily: "Comfortaa", fontSize: 16, fontWeight: "bold" }}>Select a series:</span>
+        <select className="dropdown" style={{ width: "175px" }} value={selectedOption} onChange={handleDropdownChange}>
           {/* <option value="life-expectancies">Life Expectancies</option> */}
           <option value="female-life-expectancy-interpolated">Female Life Expectancy</option>
           <option value="female-death-probability-interpolated">Female Death Probability</option>
@@ -54,7 +54,7 @@ const App = () => {
           <option value="male-death-probability-interpolated">Male Death Probability</option>
         </select>
       </label>
-      
+
       {/* {data.map(item => (
         <div key={item.year}>
           <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
