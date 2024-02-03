@@ -95,3 +95,8 @@ h1 {
   font-size: 16;
   font-weight: "bold"; 
 }
+
+.dropdown:hover {
+  transform: scale(1.05);
+  border-color: orange;
+}

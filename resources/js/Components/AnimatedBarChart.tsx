@@ -199,6 +199,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 size: 18,
                 family: 'Comfortaa', // Adjust font family if needed
             },
+            zeroline: false
         },
 
         yaxis: {
@@ -218,6 +219,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 family: 'Comfortaa', // Adjust font family if needed
             },
             automargin: true, // Allow automatic margin adjustment
+            zeroline: false
         },
 
         legend: {
@@ -260,7 +262,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     return (
         <div>
             <div>
-                <label htmlFor="yearDropdown" className="label" style={{ color: "white", marginRight: "5px", fontFamily: "Comfortaa", fontSize: 16, fontWeight: "bold" }}> Select a reference year:</label>
+                <label htmlFor="yearDropdown" className="label" style={{ color: "white", marginRight: "10px", fontFamily: "Comfortaa", fontSize: 16, fontWeight: "bold" }}> Select a reference year:</label>
                 <select className="dropdown"
                     id="yearDropdown"
                     value={referenceYear}
