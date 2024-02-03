@@ -335,6 +335,12 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     }}
                 />
 
+                <ZoomButton
+                    minAge={minAge}
+                    maxAge={maxAge}
+                    onMinAgeChange={setMinAge}
+                    onMaxAgeChange={setMaxAge}
+                />
 
                 {/* <button onClick={resetParams}> Reset </button> */}
                 <GrPowerReset
@@ -351,20 +357,13 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     }}
                     className="hover-effect"
                     onMouseOver={(e) => {
-                        e.currentTarget.style.transform = "scale(1.05)";
+                        e.currentTarget.style.transform = "scale(1.05) rotate(-180deg) rotateX(180deg)";
                         e.currentTarget.style.borderColor = "dodgerblue";
                     }}
                     onMouseOut={(e) => {
-                        e.currentTarget.style.transform = "scale(1)";
+                        e.currentTarget.style.transform = "scale(1) rotate(-180deg) rotateX(180deg)";
                         e.currentTarget.style.borderColor = "skyblue";
                     }}
-                />
-
-                <ZoomButton
-                    minAge={minAge}
-                    maxAge={maxAge}
-                    onMinAgeChange={setMinAge}
-                    onMaxAgeChange={setMaxAge}
                 />
             </div>
             <div
