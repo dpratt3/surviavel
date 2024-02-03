@@ -169,7 +169,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             color: 'white', // Set text color to white
         },
 
-        title: `${title} for ${Math.floor(yearData.year)}`,
+        title: {
+            text: `<b>${title} for ${Math.floor(yearData.year)}</b>`,
+            font: {
+              color: 'white',
+              size: 24,
+              family: 'Arial', // Adjust font family if needed
+            },
+          },
 
         titlefont: {
             color: 'white',
