@@ -4,7 +4,7 @@ import Plot from "react-plotly.js";
 import FrameRateControl from "./FrameRateControl";
 import ZoomButton from "./ZoomButton";
 import "../../css/app.css";
-import { FaBackwardStep } from "react-icons/fa6";
+import { FaBackwardStep, FaForwardStep, FaPlay } from "react-icons/fa6";
 
 interface AnimatedBarChartProps {
     data: { [key: number]: Record<string, string> }[] | null;
@@ -70,7 +70,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
 
     const onToggleAnimation = () => {
         setIsAnimating((prev) => !prev);
-    };      
+    };
 
     const Eligibleyears = Array.from(
         { length: 2020 - 1941 + 1 },
@@ -126,7 +126,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     name: "Current Year",
                     marker: {
                         color: '#006400', // Set bar color to a darker blue-green
-                      },
+                    },
                 },
                 {
                     x: lineKeys,
@@ -136,28 +136,28 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     name: "Reference Year",
                     marker: {
                         color: '#800020', // Set bar color to a darker blue-green
-                      },
+                    },
                 },
             ],
         },
     ];
 
     // Set chart y-axis title and range
-    if(title.endsWith("Probability")){
+    if (title.endsWith("Probability")) {
         var reactiveTitle = "Probability";
         // highest toward the end of life
         const deathProbs = data.map(x => Number(x[110]));
         const maxProb = Math.max(...deathProbs);
         const maxY = Math.ceil(maxProb * 10) / 10;
         var optimalRange = [0, maxY];
-    }else if(title.endsWith("Expectancy")){
+    } else if (title.endsWith("Expectancy")) {
         // highest life expectancy around age 1
         const lifeExpectancies = data.map(x => x[1])
         const maxLifeExp = Math.max(...lifeExpectancies)
         const maxY = Math.ceil(maxLifeExp * 10) / 10 + 5;
         var optimalRange = [0, maxY];
         var reactiveTitle = "Years";
-    }else{  
+    } else {
         var reactiveTitle = "Survivors";
         var optimalRange = [0, 100000];
     }
@@ -187,7 +187,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         plot_bgcolor: 'rgba(0,0,0,0)',
         responsive: true, // Enable responsive behavior
     };
-    
+
     console.log(layout.xaxis)
     // Dynamically adjust margins for cellphones (media alternative query)
     if (window.innerWidth <= 767) {
@@ -209,7 +209,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     return (
         <div>
             <div>
-                <label htmlFor="yearDropdown" className="label" style={{ color: "white", marginRight: "5px"}}> Select a reference year:</label>
+                <label htmlFor="yearDropdown" className="label" style={{ color: "white", marginRight: "5px" }}> Select a reference year:</label>
                 <select className="dropdown"
                     id="yearDropdown"
                     value={referenceYear}
@@ -237,16 +237,25 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     justifyContent: "center",
                 }}
             >
-                      <FaBackwardStep onClick={onPriorFrame} />
+                <FaBackwardStep onClick={onPriorFrame} style={{
+                    fontSize: "3rem", // Adjust the font size as needed
+                    color: "white",
+                    cursor: "pointer",
+                }} />
                 {/* <button onClick={onPriorFrame}>Prior Frame</button> */}
-                <button onClick={onNextFrame}>Next Frame</button>
+                {/* <button onClick={onNextFrame}>Next Frame</button> */}
+                <FaForwardStep onClick={onPriorFrame} style={{
+                    fontSize: "3rem", // Adjust the font size as needed
+                    color: "white",
+                    cursor: "pointer",
+                }} />
                 <button className={isAnimating ? "pause-button" : "play-button"} onClick={onToggleAnimation}>
                     {/* {isAnimating
                         ? "Stop Continuous Animation"
                         : "Start Continuous Animation"} */}
                 </button>
                 <button onClick={resetParams}> Reset </button>
-                <ZoomButton         
+                <ZoomButton
                     minAge={minAge}
                     maxAge={maxAge}
                     onMinAgeChange={setMinAge}
