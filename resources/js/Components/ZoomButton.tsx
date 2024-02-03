@@ -33,7 +33,8 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange }) => {
                     transform: "rotate(-180deg) rotateX(180deg)", // Rotate and flip
                     background: "linear-gradient(skyblue, deepskyblue)",
                     border: "2px solid skyblue",
-                    marginRight: "10px"
+                    marginRight: "10px",
+                    borderRadius: "10px"
                 }}
                 className="hover-effect"
                 onMouseOver={(e) => {

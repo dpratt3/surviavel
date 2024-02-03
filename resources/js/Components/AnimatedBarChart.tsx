@@ -271,6 +271,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                                 background: "linear-gradient(skyblue, deepskyblue)",
                                 border: "2px solid skyblue",
                                 transition: "transform 0.3s ease, border-color 0.3s ease",
+                                borderRadius: "10px"
                             }}
                             className="hover-effect"
                             onMouseOver={(e) => {
@@ -296,6 +297,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                         background: "linear-gradient(skyblue, deepskyblue)",
                         border: "2px solid skyblue",
                         transition: "transform 0.3s ease, border-color 0.3s ease",
+                        borderRadius: "10px"
                     }}
                     className="hover-effect"
                     onMouseOver={(e) => {
@@ -321,6 +323,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                         background: "linear-gradient(skyblue, deepskyblue)",
                         border: "2px solid skyblue",
                         transition: "transform 0.3s ease, border-color 0.3s ease",
+                        borderRadius: "10px"
                     }}
                     className="hover-effect"
                     onMouseOver={(e) => {
@@ -351,7 +354,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                         background: "linear-gradient(skyblue, deepskyblue)",
                         border: "2px solid skyblue",
                         transition: "transform 0.3s ease, border-color 0.3s ease",
-                        marginRight: "10px"
+                        marginRight: "10px",
+                        borderRadius: "10px"
                     }}
                     className="hover-effect"
                     onMouseOver={(e) => {
