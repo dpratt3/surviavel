@@ -373,10 +373,10 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     justifyContent: "center",
                 }}
             >
-                <label htmlFor="frameRateInput" style={{ marginRight: "8px", marginBottom: "8px" }}>
+                <label htmlFor="frameRateInput" style={{ marginRight: "8px", marginBottom: "8px", color: "white" }}>
                     Frame rate:
                 </label>
-                <FrameRateControl
+                <FrameRateControl 
                     onChange={handleFrameRateChange}
                     currentFrameRate={currentFrameRate}
                 />
