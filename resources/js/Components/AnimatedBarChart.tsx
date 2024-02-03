@@ -5,6 +5,7 @@ import FrameRateControl from "./FrameRateControl";
 import ZoomButton from "./ZoomButton";
 import "../../css/app.css";
 import { FaBackwardStep, FaForwardStep, FaPlay, FaStop } from "react-icons/fa6";
+import { GrPowerReset } from "react-icons/gr";
 
 interface AnimatedBarChartProps {
     data: { [key: number]: Record<string, string> }[] | null;
@@ -273,7 +274,16 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     )}
                     {/* Other content */}
                 </div>
-                <button onClick={resetParams}> Reset </button>
+                {/* <button onClick={resetParams}> Reset </button> */}
+                <GrPowerReset
+                    onClick={resetParams}
+                    style={{
+                        fontSize: "3rem", // Adjust the font size as needed
+                        color: "white",
+                        cursor: "pointer",
+                        transform: "rotate(-180deg) rotateX(180deg)", // Flip 180 degrees on the vertical axis
+                    }}
+                />
                 <ZoomButton
                     minAge={minAge}
                     maxAge={maxAge}
