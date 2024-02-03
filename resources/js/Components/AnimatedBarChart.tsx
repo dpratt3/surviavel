@@ -86,7 +86,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         setCurrentIndex(0);
         setCurrentFrameRate(20);
         setIsAnimating(false)
-        setForceRerender((prev) => !prev); // Toggle forceRerender to trigger a rerender
     };
 
     const handleFrameRateChange = (newFrameRate: number) => {
@@ -174,7 +173,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             font: {
                 color: 'white',
                 size: 24,
-                family: 'Arial', // Adjust font family if needed
+                family: 'Comfortaa', // Adjust font family if needed
             },
         },
 
@@ -192,12 +191,13 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 font: {
                     color: 'white',
                     size: 18, // Adjust the size of the x-axis label
-                    family: 'Arial', // Adjust font family if needed
+                    family: 'Comfortaa', // Adjust font family if needed
                 },
             },
             tickfont: {
                 color: 'white',
                 size: 18,
+                family: 'Comfortaa', // Adjust font family if needed
             },
         },
 
@@ -207,7 +207,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 font: {
                     color: 'white',
                     size: 18, // Adjust the size of the y-axis label
-                    family: 'Arial', // Adjust font family if needed
+                    family: 'Comfortaa', // Adjust font family if needed
                     weight: 'bold', // Make the y-axis title bold
                 },
             },
@@ -215,6 +215,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             tickfont: {
                 color: 'white',
                 size: 18,
+                family: 'Comfortaa', // Adjust font family if needed
             },
             automargin: true, // Allow automatic margin adjustment
         },
@@ -228,7 +229,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             font: {
                 color: 'white',
                 size: 14, // Adjust the size of the x-axis label
-                family: 'Arial', // Adjust font family if needed
+                family: 'Comfortaa', // Adjust font family if needed
             },
         },
 
@@ -425,14 +426,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     justifyContent: "center",
                 }}
             >
-                <label htmlFor="frameRateInput" style={{ marginRight: "8px", marginBottom: "8px", color: "white" }}>
+                <label htmlFor="frameRateInput" style={{ marginRight: "8px", marginBottom: "8px", color: "white", fontFamily: "Comfortaa", fontWeight: "bold"}}>
                     Frame rate:
                 </label>
                 <FrameRateControl
                     onChange={handleFrameRateChange}
                     currentFrameRate={currentFrameRate}
                 />
-                <span style={{ marginLeft: "8px", marginBottom: "8px", color: "white" }}>
+                <span style={{ marginLeft: "8px", marginBottom: "8px", color: "white", fontFamily: "Comfortaa", fontWeight: "bold"}}>
                     {currentFrameRate} FPS
                 </span>
             </div>
