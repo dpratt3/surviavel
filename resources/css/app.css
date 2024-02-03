@@ -93,3 +93,8 @@ h1 {
   left: 48%;
   transform: translate(-50%, -50%);
 }
+
+h1 {
+  font-size: 48px; /* Adjust the font size as needed */
+  margin-bottom: 10px
+}
