@@ -235,23 +235,11 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             <div
                 style={{
                     display: "flex",
-                    margin: "10px 3px",
-                    justifyContent: "center",
+                    margin: "10px 5px",
+                    justifyContent: "center"
                 }}
             >
-                <FaBackwardStep onClick={onPriorFrame} style={{
-                    fontSize: "3rem", // Adjust the font size as needed
-                    color: "white",
-                    cursor: "pointer",
-                }} />
-                {/* <button onClick={onPriorFrame}>Prior Frame</button> */}
-                {/* <button onClick={onNextFrame}>Next Frame</button> */}
-                <FaForwardStep onClick={onPriorFrame} style={{
-                    fontSize: "3rem", // Adjust the font size as needed
-                    color: "white",
-                    cursor: "pointer",
-                }} />
-                <div className="min-h-screen bg-sky-blue p-8 flex justify-center items-center">
+                <div style={{ marginRight: "10px" }}>
                     {isAnimating ? (
                         // Display FaStop if isAnimating is true
                         <FaStop
@@ -275,6 +263,21 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     )}
                     {/* Other content */}
                 </div>
+                <FaBackwardStep onClick={onPriorFrame} style={{
+                    fontSize: "3rem", // Adjust the font size as needed
+                    color: "white",
+                    cursor: "pointer",
+                    marginRight: "10px"
+                }} />
+                {/* <button onClick={onPriorFrame}>Prior Frame</button> */}
+                {/* <button onClick={onNextFrame}>Next Frame</button> */}
+                <FaForwardStep onClick={onPriorFrame} style={{
+                    fontSize: "3rem", // Adjust the font size as needed
+                    color: "white",
+                    cursor: "pointer",
+                    marginRight: "10px"
+                }} />
+
                 {/* <button onClick={resetParams}> Reset </button> */}
                 <GrPowerReset
                     onClick={resetParams}
