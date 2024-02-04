@@ -199,7 +199,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 size: 18,
                 family: 'Comfortaa', // Adjust font family if needed
             },
-            range: [Number(minAge) - 1.5, Number(maxAge) + 1.5]
+            range: [Number(minAge) - 0.5, Number(maxAge) + 0.5]
         },
 
         yaxis: {
