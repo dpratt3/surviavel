@@ -199,7 +199,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 size: 18,
                 family: 'Comfortaa', // Adjust font family if needed
             },
-            zeroline: false
         },
 
         yaxis: {
@@ -219,7 +218,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 family: 'Comfortaa', // Adjust font family if needed
             },
             automargin: true, // Allow automatic margin adjustment
-            zeroline: false
         },
 
         legend: {

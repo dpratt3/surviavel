@@ -41,6 +41,7 @@ h1 {
   font-family: "Comfortaa"; 
   font-weight: bold; /* Use 'bold' without quotes */
 }
+
 /* Style for when the dropdown is open */
 .dropdown:focus {
   border-color: #007bff;
