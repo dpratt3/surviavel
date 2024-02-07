@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { FaSearch } from "react-icons/fa";
 
-const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange }) => {
+const ZoomButton = ({ minAge, maxAge, maxY, onMinAgeChange, onMaxAgeChange, onMaxYChange }) => {
     const [newMinAge, setNewMinAge] = useState(minAge);
     const [newMaxAge, setNewMaxAge] = useState(maxAge);
+    const [newMaxY, setNewMaxY] = useState(maxY);
+
     const [dropdownVisible, setDropdownVisible] = useState(false);
 
     const toggleDropdown = () => {
@@ -14,9 +16,10 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange }) => {
         // Perform the zoom logic with newMinAge and newMaxAge values
         console.log('Zooming with min age:', newMinAge, 'and max age:', newMaxAge);
 
-        // Update the parent component state using onMinAgeChange and onMaxAgeChange
+        // Update the parent component state using onMinAgeChange and onMaxAgeChange and onMaxYChange
         onMinAgeChange(newMinAge);
         onMaxAgeChange(newMaxAge);
+        onMaxYChange(newMaxY);
 
         // Reset the dropdown values and hide the dropdown
         setDropdownVisible(false);
@@ -61,24 +64,34 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange }) => {
                         backgroundColor: '#F5F5F5',
                     }}
                 >
-                    <label style={{ width: '100px' }}>
+                    <label style={{ width: '100px', marginTop: '5px', marginBottom: '2px' }}>
                         Min age:
                         <input
-                            style={{ width: '50px', marginTop: '5px' }}
+                            style={{ width: '50px' }}
                             type="text"
                             value={newMinAge}
                             onChange={(e) => setNewMinAge(e.target.value)}
                         />
                     </label>
-                    <label style={{ width: '100px' }}>
+                    <label style={{ width: '100px', marginTop: '5px', marginBottom: '2px'  }}>
                         Max age:
                         <input
-                            style={{ width: '50px', marginTop: '5px' }}
+                            style={{ width: '50px'}}
                             type="text"
                             value={newMaxAge}
                             onChange={(e) => setNewMaxAge(e.target.value)}
                         />
                     </label>
+                    <label style={{ width: '100px', marginTop: '5px', marginBottom: '2px' }}>
+                        Max Y:&nbsp;
+                        <input
+                            style={{ width: '50px'}}
+                            type="text"
+                            value={newMaxY}
+                            onChange={(e) => setNewMaxY(e.target.value)}
+                        />
+                    </label>
+
                     <button
                         style={{
                             width: '60px',

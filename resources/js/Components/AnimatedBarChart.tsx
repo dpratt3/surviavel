@@ -19,6 +19,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const [currentFrameRate, setCurrentFrameRate] = useState<number>(20);
     const [minAge, setMinAge] = useState(0);
     const [maxAge, setMaxAge] = useState(110);
+    const [maxY, setMaxY] = useState(100000)
 
     useEffect(() => {
         let animationInterval: NodeJS.Timeout;
@@ -99,7 +100,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         !data[currentIndex] ||
         !data[currentIndex].year
     ) {
-        return <div>Loading...</div>;
+        return <div style={{ marginTop: "8px", marginBottom: "8px", color: "white", fontFamily: "Comfortaa", fontWeight: "bold" }}>Loading...</div>;
     }
 
     // if title changes, 
@@ -158,10 +159,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         var reactiveTitle = "<b>Years<b>";
     } else {
         var reactiveTitle = "<b>Survivors<b>";
-        var optimalRange = [0, 100000];
+        var optimalRange = [0, maxY];
     }
-
-    console.log(maxAge, "<-----------------------------")
 
     var layout = {
         font: {
@@ -393,8 +392,10 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 <ZoomButton
                     minAge={minAge}
                     maxAge={maxAge}
+                    maxY={maxY}
                     onMinAgeChange={setMinAge}
                     onMaxAgeChange={setMaxAge}
+                    onMaxYChange={setMaxY}
                 />
 
                 {/* <button onClick={resetParams}> Reset </button> */}
@@ -429,14 +430,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     justifyContent: "center",
                 }}
             >
-                <label htmlFor="frameRateInput" style={{ marginRight: "8px", marginBottom: "8px", color: "white", fontFamily: "Comfortaa", fontWeight: "bold"}}>
+                <label htmlFor="frameRateInput" style={{ marginRight: "8px", marginBottom: "8px", color: "white", fontFamily: "Comfortaa", fontWeight: "bold" }}>
                     Frame rate:
                 </label>
                 <FrameRateControl
                     onChange={handleFrameRateChange}
                     currentFrameRate={currentFrameRate}
                 />
-                <span style={{ marginLeft: "8px", marginBottom: "8px", color: "white", fontFamily: "Comfortaa", fontWeight: "bold"}}>
+                <span style={{ marginLeft: "8px", marginBottom: "8px", color: "white", fontFamily: "Comfortaa", fontWeight: "bold" }}>
                     {currentFrameRate} FPS
                 </span>
             </div>
