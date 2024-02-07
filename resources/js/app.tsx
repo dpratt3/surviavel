@@ -40,7 +40,7 @@ const App = () => {
   return (
     <div style={{ textAlign: 'center' }}>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap"></link>
-      <h1>Surviavel</h1>
+      <h1>Survitality</h1>
       {/* Add a dropdown menu */}
       <label style={{ color: "white" }}>
         <span style={{ marginRight: "10px", fontFamily: "Comfortaa", fontSize: 16, fontWeight: "bold" }}>Select a series:</span>
