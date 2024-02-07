@@ -4,7 +4,6 @@ import { FaSearch } from "react-icons/fa";
 const ZoomButton = ({ minAge, maxAge, maxY, onMinAgeChange, onMaxAgeChange, onMaxYChange }) => {
     const [newMinAge, setNewMinAge] = useState(minAge);
     const [newMaxAge, setNewMaxAge] = useState(maxAge);
-    const [newMaxY, setNewMaxY] = useState(maxY);
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -19,7 +18,6 @@ const ZoomButton = ({ minAge, maxAge, maxY, onMinAgeChange, onMaxAgeChange, onMa
         // Update the parent component state using onMinAgeChange and onMaxAgeChange and onMaxYChange
         onMinAgeChange(newMinAge);
         onMaxAgeChange(newMaxAge);
-        onMaxYChange(newMaxY);
 
         // Reset the dropdown values and hide the dropdown
         setDropdownVisible(false);
@@ -80,15 +78,6 @@ const ZoomButton = ({ minAge, maxAge, maxY, onMinAgeChange, onMaxAgeChange, onMa
                             type="text"
                             value={newMaxAge}
                             onChange={(e) => setNewMaxAge(e.target.value)}
-                        />
-                    </label>
-                    <label style={{ width: '100px', marginTop: '5px', marginBottom: '2px' }}>
-                        Max Y:&nbsp;
-                        <input
-                            style={{ width: '50px'}}
-                            type="text"
-                            value={newMaxY}
-                            onChange={(e) => setNewMaxY(e.target.value)}
                         />
                     </label>
 
