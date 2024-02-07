@@ -44,7 +44,7 @@ const App = () => {
       {/* Add a dropdown menu */}
       <label style={{ color: "white" }}>
         <span style={{ marginRight: "10px", fontFamily: "Comfortaa", fontSize: 16, fontWeight: "bold" }}>Select a series:</span>
-        <select className="dropdown" style={{ width: "175px" }} value={selectedOption} onChange={handleDropdownChange}>
+        <select className="dropdown" style={{ width: "200px" }} value={selectedOption} onChange={handleDropdownChange}>
           {/* <option value="life-expectancies">Life Expectancies</option> */}
           <option value="female-life-expectancy-interpolated">Female Life Expectancy</option>
           <option value="female-death-probability-interpolated">Female Death Probability</option>
