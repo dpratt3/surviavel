@@ -31,13 +31,13 @@ h1 {
   font-size: 12px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  background: radial-gradient(circle, #87CEEB, #191970); /* Sky blue to Midnight blue gradient */
-  color: #fff;
+  background-color: #F5F5F5;
+  color: #444444;
   cursor: pointer;
   outline: none;
   width: 105px;
   text-align: center;
-  opacity: 0.75;
+  opacity: 0.90;
   font-family: "Comfortaa"; 
   font-weight: bold; /* Use 'bold' without quotes */
 }
@@ -109,7 +109,7 @@ h1 {
 }
 
 .link {
-  color: blue;
+  color: white;
   text-decoration: none;
 }
 

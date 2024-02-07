@@ -58,7 +58,7 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange }) => {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        backgroundColor: 'purple',
+                        backgroundColor: '#F5F5F5',
                     }}
                 >
                     <label style={{ width: '100px' }}>
