@@ -96,3 +96,23 @@ h1 {
   letter-spacing: 8.5px;
   font-family: "Comfortaa", sans-serif; /* Specify the font-family */
 }
+
+/* Define hover links for database resources */
+
+.container {
+  margin-right: 10px;
+  font-family: Comfortaa;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  margin-top: 10px;
+}
+
+.link {
+  color: blue;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #33A02C; /* Plotly default green */;
+}

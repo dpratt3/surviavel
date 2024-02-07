@@ -199,6 +199,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 size: 18,
                 family: 'Comfortaa', // Adjust font family if needed
             },
+            tickmode: 'auto',
+            dtick: 1,
             range: [Number(minAge) - 0.5, Number(maxAge) + 0.5]
         },
 
