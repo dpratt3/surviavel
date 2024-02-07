@@ -7,6 +7,7 @@ import '../css/app.css'
 const App = () => {
   const [data, setData] = useState([]);
   const [selectedOption, setSelectedOption] = useState('female-number-of-lives-interpolated');
+  const [loading, setLoading] = useState(false);
 
   const titleMap = {
     'female-life-expectancy-interpolated': 'Female Life Expectancy',
@@ -22,11 +23,14 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(`http://localhost:8000/api/${selectedOption}`);
         console.log(response);
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -35,6 +39,7 @@ const App = () => {
 
   const handleDropdownChange = (event) => {
     setSelectedOption(event.target.value);
+
   };
 
   return (
@@ -61,16 +66,23 @@ const App = () => {
         </div>
       ))} */}
 
+      {loading && <div style={{ marginTop: "8px", marginBottom: "8px", color: "white", fontFamily: "Comfortaa", fontWeight: "bold" }}>Loading...</div>}
+      
+      {!loading && data &&
+      <div>
       <div style={{ margin: 'auto', width: '50%' }}>
         <AnimatedBarChart data={data} title={title} />
       </div>
+            <div className="container">
+            Data is from the <a href="https://site.demog.berkeley.edu/" className="link">Berkeley Mortality Database</a> (1941-2003)
+            <div style={{ marginTop: "10px" }}>
+              and the <a href="https://www.ssa.gov/oact/STATS/table4c6.html" className="link">Social Security Administration</a> (2004-2020)
+            </div>
+          </div>
+          </div>
+      }
 
-      <div className="container">
-        Data is from the <a href="https://site.demog.berkeley.edu/" className="link">Berkeley Mortality Database</a> (1941-2003)
-        <div style={{ marginTop: "10px" }}>
-          and the <a href="https://www.ssa.gov/oact/STATS/table4c6.html" className="link">Social Security Administration</a> (2004-2020)
-        </div>
-      </div>
+
 
     </div>
   );
