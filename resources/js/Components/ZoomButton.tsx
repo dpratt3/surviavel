@@ -28,22 +28,24 @@ const ZoomButton = ({ minAge, maxAge, maxY, onMinAgeChange, onMaxAgeChange, onMa
             <FaSearch
                 onClick={toggleDropdown}
                 style={{
-                    fontSize: "3rem", // Adjust the font size as needed
+                    fontSize: "2.75rem", // Adjust the font size as needed
                     color: "white",
                     cursor: "pointer",
-                    transform: "rotate(-180deg) rotateX(180deg)", // Rotate and flip
+                    transform: "rotate(-270deg) rotateX(180deg)", // Rotate and flip
                     background: "linear-gradient(skyblue, deepskyblue)",
                     border: "2px solid skyblue",
                     marginRight: "10px",
-                    borderRadius: "10px"
+                    borderRadius: "10px",
+                    padding: '2px', // Add padding to the icon
+                    boxSizing: 'content-box', // Ensure padding is included within the specified width and height
                 }}
                 className="hover-effect"
                 onMouseOver={(e) => {
-                    e.currentTarget.style.transform = "scale(1.15)";
+                    e.currentTarget.style.transform = "rotate(-270deg) rotateX(180deg) scale(1.15)";
                     e.currentTarget.style.borderColor = "orange";
                 }}
                 onMouseOut={(e) => {
-                    e.currentTarget.style.transform = "scale(1)";
+                    e.currentTarget.style.transform = "rotate(-270deg) rotateX(180deg) scale(1)";
                     e.currentTarget.style.borderColor = "skyblue";
                 }}
             />
