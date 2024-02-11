@@ -67,19 +67,19 @@ const App = () => {
       ))} */}
 
       {loading && <div style={{ marginTop: "8px", marginBottom: "8px", color: "white", fontFamily: "Comfortaa", fontWeight: "bold" }}>Loading...</div>}
-      
+
       {!loading && data &&
-      <div>
-      <div style={{ margin: 'auto', width: '50%' }}>
-        <AnimatedBarChart data={data} title={title} />
-      </div>
-            <div className="container">
+        <div>
+          <div style={{ margin: 'auto', width: '50%' }}>
+            <AnimatedBarChart data={data} title={title} />
+          </div>
+          <div className="container">
             Data is from the <a href="https://site.demog.berkeley.edu/" className="link">Berkeley Mortality Database</a> (1941-2003)
             <div style={{ marginTop: "10px" }}>
               and the <a href="https://www.ssa.gov/oact/STATS/table4c6.html" className="link">Social Security Administration</a> (2004-2020)
             </div>
           </div>
-          </div>
+        </div>
       }
 
 
