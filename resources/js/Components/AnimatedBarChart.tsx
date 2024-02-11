@@ -323,7 +323,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                                 fontSize: "3rem", // Adjust the font size as needed
                                 color: "white",
                                 cursor: "pointer",
-                                background: "linear-gradient(skyblue, deepskyblue)",
+                                background: "#485965",
                                 border: "2px solid skyblue",
                                 transition: "transform 0.3s ease, border-color 0.3s ease",
                                 borderRadius: "10px"
@@ -349,7 +349,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                         color: "white",
                         cursor: "pointer",
                         marginRight: "10px",
-                        background: "linear-gradient(skyblue, deepskyblue)",
+                        background: "#485965",
                         border: "2px solid skyblue",
                         transition: "transform 0.3s ease, border-color 0.3s ease",
                         borderRadius: "10px"
@@ -375,7 +375,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                         color: "white",
                         cursor: "pointer",
                         marginRight: "10px",
-                        background: "linear-gradient(skyblue, deepskyblue)",
+                        background: "#485965",
                         border: "2px solid skyblue",
                         transition: "transform 0.3s ease, border-color 0.3s ease",
                         borderRadius: "10px"
@@ -408,7 +408,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                         color: "white",
                         cursor: "pointer",
                         transform: "rotate(-180deg) rotateX(180deg)", // Flip 180 degrees on the vertical axis
-                        background: "linear-gradient(skyblue, deepskyblue)",
+                        background: "#485965",
                         border: "2px solid skyblue",
                         transition: "transform 0.3s ease, border-color 0.3s ease",
                         marginRight: "10px",

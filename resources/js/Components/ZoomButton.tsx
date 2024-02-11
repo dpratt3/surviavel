@@ -32,7 +32,7 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
                     color: "white",
                     cursor: "pointer",
                     transform: "rotate(-270deg) rotateX(180deg)", // Rotate and flip
-                    background: "linear-gradient(skyblue, deepskyblue)",
+                    background: "#485965",
                     border: "2px solid skyblue",
                     marginRight: "10px",
                     borderRadius: "10px",
