@@ -35,7 +35,7 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
             <FaSearch
                 onClick={toggleDropdown}
                 style={{
-                    fontSize: "2.75rem", // Adjust the font size as needed
+                    fontSize: "2.30rem", // Adjust the font size as needed
                     color: "white",
                     cursor: "pointer",
                     transform: "rotate(-270deg) rotateX(180deg)", // Rotate and flip
@@ -43,7 +43,7 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
                     border: "2px solid skyblue",
                     marginRight: "10px",
                     borderRadius: "10px",
-                    padding: '2px', // Add padding to the icon
+                    padding: '5px', // Add padding to the icon
                     boxSizing: 'content-box', // Ensure padding is included within the specified width and height
                 }}
                 className="hover-effect"
