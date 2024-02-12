@@ -19,8 +19,15 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
         onMinAgeChange(newMinAge);
         onMaxAgeChange(newMaxAge);
 
+        const updatedLayout = { ...layout };
+        layout.xaxis.range = [minAge - 1.5, maxAge + 1.5] // keep bars from getting cut off
+
+        // Update the layout using the passed function
+        updateLayout(updatedLayout);
+
         // Reset the dropdown values and hide the dropdown
         setDropdownVisible(false);
+
     };
 
     return (
@@ -90,7 +97,7 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
                             fontSize: '1rem',
                             color: 'white',
                             cursor: 'pointer',
-                            background: "linear-gradient(skyblue, deepskyblue)",
+                            background: "#485965",
                             border: '2px solid #FF007B', /* Border color similar to the gradient */
                             borderRadius: '10px',
                             transition: 'transform 0.3s ease, border-color 0.3s ease',
