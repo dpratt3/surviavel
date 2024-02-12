@@ -141,18 +141,18 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             ],
         },
     ];
-    
+
     // Set chart y-axis title and range
     if (title.endsWith("Probability")) {
         var reactiveTitle = "<b>Probability<b>";
         // highest toward the end of life
-        const deathProbs = data.map(x => x[ Number(maxAge) ]);
+        const deathProbs = data.map(x => x[Number(maxAge)]);
         const maxProb = Math.max(...deathProbs);
         const maxY = Math.ceil(maxProb * 10) / 10;
         var optimalRange = [0, maxY];
     } else if (title.endsWith("Expectancy")) {
         // highest life expectancy around age 1
-        const lifeExpectancies = data.map(x => x[ Number(minAge)])
+        const lifeExpectancies = data.map(x => x[Number(minAge)])
         const maxLifeExp = Math.max(...lifeExpectancies)
         const maxY = 1.10 * Math.ceil(maxLifeExp * 10) / 10;
         var optimalRange = [0, maxY];
@@ -289,11 +289,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             </div>
             <div
                 style={{
-                    display: "flex",
-                    flexWrap: "wrap",
+                    display: "grid",
+                    gridAutoFlow: "column", // Set the flow direction to column
+                    // // gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))", // Adjust column width as needed
+                    // gap: "10px", // Adjust the gap between grid items
+                    justifyContent: "center",
                     margin: "10px 5px",
-                    justifyContent: "center"
                 }}
+
             >
                 <div style={{ marginRight: "10px" }}>
                     {isAnimating ? (
@@ -320,6 +323,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                                 e.currentTarget.style.borderColor = "skyblue";
                             }}
                         />
+
                     ) : (
                         // Display FaPlay if isAnimating is false
                         <FaPlay
