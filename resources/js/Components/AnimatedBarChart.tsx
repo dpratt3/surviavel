@@ -280,7 +280,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 </select>
                 {/* <p>Selected Year: {referenceYear}</p> */}
             </div>
-            <div className="plot-container" style={{ marginBottom: "20px" }}>
+            <div className="plot-container" style={{ marginBottom: "20px", marginLeft: "10px" }}>
                 <Plot
                     data={frames[0].data}
                     layout={layout}
@@ -290,6 +290,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             <div
                 style={{
                     display: "flex",
+                    flexWrap: "wrap",
                     margin: "10px 5px",
                     justifyContent: "center"
                 }}
