@@ -141,25 +141,27 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             ],
         },
     ];
-
+    
     // Set chart y-axis title and range
     if (title.endsWith("Probability")) {
         var reactiveTitle = "<b>Probability<b>";
         // highest toward the end of life
-        const deathProbs = data.map(x => Number(x[maxAge]));
+        const deathProbs = data.map(x => x[ Number(maxAge) ]);
         const maxProb = Math.max(...deathProbs);
         const maxY = Math.ceil(maxProb * 10) / 10;
         var optimalRange = [0, maxY];
     } else if (title.endsWith("Expectancy")) {
         // highest life expectancy around age 1
-        const lifeExpectancies = data.map(x => x[minAge])
+        const lifeExpectancies = data.map(x => x[ Number(minAge)])
         const maxLifeExp = Math.max(...lifeExpectancies)
-        const maxY = Math.ceil(maxLifeExp * 10) / 10 + 5;
+        const maxY = 1.10 * Math.ceil(maxLifeExp * 10) / 10;
         var optimalRange = [0, maxY];
         var reactiveTitle = "<b>Years<b>";
     } else {
-        const survivorCount = data.map(x => x[minAge + 1])
+        const survivorCount = data.map(x => x[Number(minAge) + 1])
+        console.log(survivorCount)
         const maxSurvivorCount = Math.max(...survivorCount)
+        console.log(maxSurvivorCount, "<================ max survivor count")
         var reactiveTitle = "<b>Survivors<b>";
         var optimalRange = [0, maxSurvivorCount];
     }
@@ -265,7 +267,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         <div>
             <div>
                 <label htmlFor="yearDropdown" className="label" style={{ color: "white", marginRight: "10px", fontFamily: "Comfortaa", fontSize: 16, fontWeight: "bold" }}> Select a reference year:</label>
-                <select className="dropdown" style ={{width: "130px", marginTop: "5px"}}
+                <select className="dropdown" style={{ width: "130px", marginTop: "5px" }}
                     id="yearDropdown"
                     value={referenceYear}
                     onChange={handleChange}
