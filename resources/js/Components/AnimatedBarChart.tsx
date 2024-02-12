@@ -301,13 +301,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                         <FaStop
                             onClick={onToggleAnimation}
                             style={{
-                                fontSize: "3rem", // Adjust the font size as needed
+                                fontSize: "2.52rem", // Adjust the font size as needed
                                 color: "white",
                                 cursor: "pointer",
                                 background: "#485965",
                                 border: "2px solid skyblue",
                                 transition: "transform 0.3s ease, border-color 0.3s ease",
-                                borderRadius: '10px'
+                                borderRadius: '10px',
+                                padding: "3px"
                             }}
                             className="hover-effect"
                             onMouseOver={(e) => {
