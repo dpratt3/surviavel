@@ -323,7 +323,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                         <FaPlay
                             onClick={onToggleAnimation}
                             style={{
-                                fontSize: "2.52rem", // Adjust the font size as needed
+                                fontSize: "2.50rem", // Adjust the font size as needed
                                 color: "white",
                                 cursor: "pointer",
                                 background: "#485965",
