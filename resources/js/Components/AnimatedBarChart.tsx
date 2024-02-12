@@ -291,8 +291,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 style={{
                     display: "grid",
                     gridAutoFlow: "column", // Set the flow direction to column
-                    // // gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))", // Adjust column width as needed
-                    // gap: "10px", // Adjust the gap between grid items
                     justifyContent: "center",
                     margin: "10px 5px",
                 }}
