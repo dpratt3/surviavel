@@ -12,9 +12,9 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
     };
 
     const resetParams = () => {
-        // Perform the zoom logic with newMinAge and newMaxAge values
-        console.log('Zooming with min age:', newMinAge, 'and max age:', newMaxAge);
-
+        // Hide dropdown when apply button is pressed
+        setDropdownVisible(!dropdownVisible);
+        
         // Update the parent component state using onMinAgeChange and onMaxAgeChange and onMaxYChange
         onMinAgeChange(newMinAge);
         onMaxAgeChange(newMaxAge);
@@ -24,10 +24,7 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
 
         // Update the layout using the passed function
         updateLayout(updatedLayout);
-
-        // Reset the dropdown values and hide the dropdown
-        setDropdownVisible(false);
-
+        
     };
 
     return (
