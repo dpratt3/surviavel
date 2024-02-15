@@ -20,6 +20,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const [minAge, setMinAge] = useState(0);
     const [maxAge, setMaxAge] = useState(110);
     const [maxY, setMaxY] = useState(100000)
+    const [dropdownValues, setDropdownValues] = useState([minAge, maxAge]);
 
     useEffect(() => {
         let animationInterval: NodeJS.Timeout;
@@ -87,6 +88,8 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         setCurrentIndex(0);
         setCurrentFrameRate(20);
         setIsAnimating(false)
+        setMinAge(0)
+        setMaxAge(110)
     };
 
     const handleFrameRateChange = (newFrameRate: number) => {
@@ -408,6 +411,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     onMinAgeChange={setMinAge}
                     onMaxAgeChange={setMaxAge}
                     onMaxYChange={setMaxY}
+                    dropdownValues={dropdownValues}
                 />
 
                 {/* <button onClick={resetParams}> Reset </button> */}

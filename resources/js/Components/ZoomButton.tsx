@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaSearch } from "react-icons/fa";
 
-const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
+const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange45}) => {
     const [newMinAge, setNewMinAge] = useState(minAge);
     const [newMaxAge, setNewMaxAge] = useState(maxAge);
 
@@ -10,6 +10,12 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
     };
+
+    // If reset button is pressed, reset values in dropdown
+    useEffect(() => {
+        setNewMinAge(minAge);
+        setNewMaxAge(maxAge);
+    }, [minAge, maxAge]);
 
     const resetParams = () => {
         // Hide dropdown when apply button is pressed
