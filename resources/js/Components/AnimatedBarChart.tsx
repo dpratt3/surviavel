@@ -168,6 +168,15 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         var optimalRange = [0, maxSurvivorCount];
     }
 
+    // Make plotly only plot integer tick values
+    const tickBuffer = 0.5;
+    const min = Math.floor(Number(minAge));
+    const max = Math.ceil(Number(maxAge));
+    const tickValues = [];
+    for (let i = min - tickBuffer; i <= max + tickBuffer; i++) {
+        tickValues.push(i);
+    };
+
     var layout = {
         font: {
             color: 'white', // Set text color to white
@@ -206,6 +215,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             },
             tickmode: 'auto',
             dtick: 1,
+            tickformat: ',d',
             range: [Number(minAge) - 0.5, Number(maxAge) + 0.5]
         },
 
