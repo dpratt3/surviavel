@@ -4,8 +4,8 @@ import { FaSearch } from "react-icons/fa";
 const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
     const [newMinAge, setNewMinAge] = useState(minAge);
     const [newMaxAge, setNewMaxAge] = useState(maxAge);
-
     const [dropdownVisible, setDropdownVisible] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
@@ -16,6 +16,18 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
         setNewMinAge(minAge);
         setNewMaxAge(maxAge);
     }, [minAge, maxAge]);
+
+    // Gray out button if min-max age range is invalid (min > max) or max > 130
+    useEffect(() => {
+        const minAge = parseInt(newMinAge);
+        const maxAge = parseInt(newMaxAge);
+    
+        const isInvalidAgeRange = minAge >= maxAge || minAge < 0 || maxAge > 110 || isNaN(minAge) || isNaN(maxAge);
+    
+        setIsDisabled(isInvalidAgeRange);
+    }, [newMinAge, newMaxAge]);
+    
+
 
     const resetParams = () => {
         // Hide dropdown when apply button is pressed
@@ -32,6 +44,17 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
         updateLayout(updatedLayout);
         
     };
+
+    // Disable Apply button if age range is invalid (minAge > maxAge )
+    const handleApplyClick = () => {
+        if (parseInt(newMinAge) > parseInt(newMaxAge)) {
+            setIsDisabled(true);
+        } else {
+            setIsDisabled(false);
+            resetParams();
+        }
+    };
+
 
     return (
         <div style={{ position: 'relative', display: 'inline-block' }}>
@@ -104,9 +127,10 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
                             border: '2px solid #FF007B', /* Border color similar to the gradient */
                             borderRadius: '10px',
                             transition: 'transform 0.3s ease, border-color 0.3s ease',
-                            marginTop: '3px'
+                            marginTop: '3px',
+                            opacity: isDisabled ? 0.25 : 1,
                         }}
-                        onClick={resetParams}
+                        onClick={handleApplyClick}
                         onMouseOver={(e) => {
                             e.currentTarget.style.transform = 'scale(1.1)';
                             e.currentTarget.style.borderColor = 'orange';
