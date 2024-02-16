@@ -83,7 +83,7 @@ for colname in colnames:
     splineList = [splineExpander(columnwise[col]) for col in columnwise.columns]
 
     # Expand the timeline for a smoother curve
-    increment = 1/10
+    increment = 1/12
     minYear = min(columnwise.index)
     maxYear = max(columnwise.index)
     expandedTimeline = np.arange(minYear, maxYear + increment, increment)
@@ -100,13 +100,7 @@ for colname in colnames:
     print(f'Number of columns: {num_columns}')
 
     # Specify the column name
-    # age = 3  # Change this to the actual column name
-
-    # # Plot the selected column
-    # plt.plot(result_df.index, result_df[age], label=age)
-    # plt.xlabel('Expanded Timeline')
-    # plt.ylabel('Spline Values')
-    # plt.title(f'Plot of {age}')
+    # age = 3  # Change this to the actual column name1
     # plt.legend()
     # plt.show()
 

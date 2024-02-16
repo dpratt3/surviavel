@@ -22,7 +22,7 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
         const minAge = parseInt(newMinAge);
         const maxAge = parseInt(newMaxAge);
     
-        const isInvalidAgeRange = minAge >= maxAge || minAge < 0 || maxAge > 110 || isNaN(minAge) || isNaN(maxAge);
+        const isInvalidAgeRange = minAge >= maxAge || minAge < 0 || maxAge > 120 || isNaN(minAge) || isNaN(maxAge);
     
         setIsDisabled(isInvalidAgeRange);
     }, [newMinAge, newMaxAge]);
