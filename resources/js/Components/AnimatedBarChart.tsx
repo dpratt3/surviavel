@@ -380,7 +380,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 {/* <button onClick={onPriorFrame}>Prior Frame</button> */}
                 {/* <button onClick={onNextFrame}>Next Frame</button> */}
                 <FaForwardStep
-                    onClick={onPriorFrame}
+                    onClick={onNextFrame}
                     style={{
                         fontSize: "2.52rem",
                         color: "white",
