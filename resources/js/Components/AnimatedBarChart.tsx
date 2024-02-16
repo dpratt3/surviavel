@@ -279,7 +279,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         layout.xaxis.range = [Number(minAge) - 0.50, Number(maxAge) + 0.50];
     }
     
-
     return (
         <div>
             <div>
