@@ -172,10 +172,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const tickBuffer = 0.5;
     const min = Math.floor(Number(minAge));
     const max = Math.ceil(Number(maxAge));
-    const tickValues = [];
-    for (let i = min - tickBuffer; i <= max + tickBuffer; i++) {
-        tickValues.push(i);
-    };
 
     var layout = {
         font: {
@@ -213,10 +209,10 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 size: 18,
                 family: 'Comfortaa', // Adjust font family if needed
             },
+            
             tickmode: 'auto',
-            dtick: 1,
-            tickformat: ',d',
-            range: [Number(minAge) - 0.5, Number(maxAge) + 0.5]
+            tickformat: 'd',
+            range: [Number(minAge) - 0.50, Number(maxAge) + 0.50]
         },
 
         yaxis: {
@@ -274,6 +270,15 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             b: 50,  // bottom margin
         };
     }
+    
+    // Conditionally change layout to fit small age ranges
+    if (Number(maxAge) - Number(minAge) < 6) {
+        layout.xaxis.tickmode = 'array';
+        layout.xaxis.tickvals = Array.from({ length: Math.ceil(Number(maxAge) - Number(minAge)) + 1 }, (_, i) => Number(minAge) + i);
+        layout.xaxis.tickformat = 'd';
+        layout.xaxis.range = [Number(minAge) - 0.50, Number(maxAge) + 0.50];
+    }
+    
 
     return (
         <div>
