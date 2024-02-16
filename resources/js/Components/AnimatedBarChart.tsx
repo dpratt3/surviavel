@@ -164,7 +164,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         const survivorCount = data.map(x => x[Number(minAge) + 1])
         console.log(survivorCount)
         const maxSurvivorCount = Math.max(...survivorCount)
-        console.log(maxSurvivorCount, "<================ max survivor count")
         var reactiveTitle = "<b>Survivors<b>";
         var optimalRange = [0, maxSurvivorCount];
     }
