@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaSearch } from "react-icons/fa";
 
-const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange45}) => {
+const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange}) => {
     const [newMinAge, setNewMinAge] = useState(minAge);
     const [newMaxAge, setNewMaxAge] = useState(maxAge);
 
