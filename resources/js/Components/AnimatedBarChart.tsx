@@ -165,8 +165,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     if (
         !data ||
         data.length === 0 ||
-        !data[currentIndex] ||
-        !data[currentIndex].year
+        !data[currentIndex]
     ) {
         return <div style={{ marginTop: "8px", marginBottom: "8px", color: "white", fontFamily: "Comfortaa", fontWeight: "bold" }}>Loading...</div>;
     }
