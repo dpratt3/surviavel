@@ -6,7 +6,7 @@ import '../css/app.css'
 
 interface DataItem {
   year: number;
-  [key: string]: number;
+  [key: number]: Record<string, string>;
 }
 
 interface AnimatedBarChartProps {
@@ -50,7 +50,6 @@ const App = () => {
   const handleDropdownChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
   };
-
 
   return (
     <div style={{ textAlign: 'center' }}>
