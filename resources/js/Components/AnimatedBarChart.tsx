@@ -43,6 +43,25 @@ interface Data {
     // Add other config options as needed
   }
   
+  interface XAxisLayout {
+    title: {
+        text: string;
+        font: {
+            color: string;
+            size: number;
+            family: string;
+        };
+    };
+    tickfont: {
+        color: string;
+        size: number;
+        family: string;
+    };
+    tickmode: string;
+    tickformat: string;
+    range: number[];
+    tickvals?: number[]; // Ensure tickvals is optional
+}
 
 interface ZoomButtonProps {
     minAge: number;
@@ -320,11 +339,11 @@ if (title.endsWith("Probability")) {
     // Conditionally change layout to fit small age ranges
     if (Number(maxAge) - Number(minAge) < 6) {
         layout.xaxis.tickmode = 'array';
-        layout.xaxis.tickvals = Array.from({ length: Math.ceil(Number(maxAge) - Number(minAge)) + 1 }, (_, i) => Number(minAge) + i);
+        (layout.xaxis as XAxisLayout).tickvals = Array.from({ length: Math.ceil(Number(maxAge) - Number(minAge)) + 1 }, (_, i) => Number(minAge) + i);
         layout.xaxis.tickformat = 'd';
         layout.xaxis.range = [Number(minAge) - 0.50, Number(maxAge) + 0.50];
-    }
-    
+    }  
+
     return (
         <div>
             <div>
