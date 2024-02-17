@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { FaSearch } from "react-icons/fa";
 
-const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange, layout}) => {
+interface ZoomButtonProps {
+    minAge: number;
+    maxAge: number;
+    onMinAgeChange: (value: number) => void;
+    onMaxAgeChange: (value: number) => void;
+    layout: Record<string, any>;
+}
+
+const ZoomButton: React.FC<ZoomButtonProps> = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange, layout }) => {
     const [newMinAge, setNewMinAge] = useState(minAge);
     const [newMaxAge, setNewMaxAge] = useState(maxAge);
     const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -19,20 +27,20 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange, layout}) =
 
     // Gray out button if min-max age range is invalid (min > max) or max > 130
     useEffect(() => {
-        const minAge = parseInt(newMinAge);
-        const maxAge = parseInt(newMaxAge);
-    
+        const minAge = newMinAge;
+        const maxAge = newMaxAge;
+
         const isInvalidAgeRange = minAge >= maxAge || minAge < 0 || maxAge > 120 || isNaN(minAge) || isNaN(maxAge);
-    
+
         setIsDisabled(isInvalidAgeRange);
     }, [newMinAge, newMaxAge]);
-    
+
 
 
     const resetParams = () => {
         // Hide dropdown when apply button is pressed
         setDropdownVisible(!dropdownVisible);
-        
+
         // Update the parent component state using onMinAgeChange and onMaxAgeChange and onMaxYChange
         onMinAgeChange(newMinAge);
         onMaxAgeChange(newMaxAge);
@@ -41,13 +49,13 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange, layout}) =
         layout.xaxis.range = [minAge - 1.5, maxAge + 1.5] // keep bars from getting cut off
 
         // Update the layout using the passed function
-        updateLayout(updatedLayout);
-        
+        // updateLayout(updatedLayout);
+
     };
 
     // Disable Apply button if age range is invalid (minAge > maxAge )
     const handleApplyClick = () => {
-        if (parseInt(newMinAge) > parseInt(newMaxAge)) {
+        if (newMinAge > newMaxAge) {
             setIsDisabled(true);
         } else {
             setIsDisabled(false);
@@ -102,17 +110,18 @@ const ZoomButton = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange, layout}) =
                         <input
                             style={{ width: '50px' }}
                             type="text"
-                            value={newMinAge}
-                            onChange={(e) => setNewMinAge(e.target.value)}
+                            value={newMinAge.toString()} // Ensure the input value is a string
+                            onChange={(e) => setNewMinAge(parseInt(e.target.value, 10) || 0)} // Convert input value to a number
                         />
+
                     </label>
-                    <label style={{ width: '100px', marginTop: '5px', marginBottom: '2px'  }}>
+                    <label style={{ width: '100px', marginTop: '5px', marginBottom: '2px' }}>
                         Max age:
                         <input
-                            style={{ width: '50px'}}
+                            style={{ width: '50px' }}
                             type="text"
                             value={newMaxAge}
-                            onChange={(e) => setNewMaxAge(e.target.value)}
+                            onChange={(e) => setNewMaxAge(parseInt(e.target.value, 10) || 0)}
                         />
                     </label>
 

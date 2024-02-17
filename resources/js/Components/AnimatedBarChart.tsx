@@ -80,7 +80,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         (_, index) => 1941 + index
     );
 
-    const handleChange = (event) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setReferenceYear(parseInt(event.target.value, 10)); // Convert the value to an integer
     };
 
@@ -254,7 +254,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         responsive: true, // Enable responsive behavior
     };
 
-    console.log(layout.xaxis)
     // Dynamically adjust margins for cellphones (media alternative query)
     if (window.innerWidth <= 767) {
         layout.margin = {
