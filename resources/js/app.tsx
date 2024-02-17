@@ -1,15 +1,25 @@
 import { createRoot } from 'react-dom/client';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEvent } from 'react';
 import AnimatedBarChart from './Components/AnimatedBarChart';
 import '../css/app.css'
 
-const App = () => {
-  const [data, setData] = useState([]);
-  const [selectedOption, setSelectedOption] = useState('female-number-of-lives-interpolated');
-  const [loading, setLoading] = useState(false);
+interface DataItem {
+  year: number;
+  [key: string]: number;
+}
 
-  const titleMap = {
+interface AnimatedBarChartProps {
+  data: DataItem[];
+  title: string;
+}
+
+const App = () => {
+  const [data, setData] = useState<Array<DataItem>>([]);
+  const [selectedOption, setSelectedOption] = useState<string>('female-number-of-lives-interpolated');
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const titleMap: { [key: string]: string } = {
     'female-life-expectancy-interpolated': 'Female Life Expectancy',
     'female-death-probability-interpolated': 'Female Death Probability',
     'female-number-of-lives-interpolated': 'Female Number of Lives',
@@ -18,13 +28,13 @@ const App = () => {
     'male-death-probability-interpolated': 'Male Death Probability'
   };
 
-  const title = titleMap[selectedOption]
+  const title = titleMap[selectedOption];
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:8000/api/${selectedOption}`);
+        const response = await axios.get<Array<DataItem>>(`http://localhost:8000/api/${selectedOption}`);
         console.log(response);
         setData(response.data);
       } catch (error) {
@@ -37,10 +47,10 @@ const App = () => {
     fetchData();
   }, [selectedOption]);
 
-  const handleDropdownChange = (event) => {
+  const handleDropdownChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
-
   };
+
 
   return (
     <div style={{ textAlign: 'center' }}>
@@ -50,7 +60,6 @@ const App = () => {
       <label style={{ color: "white" }}>
         <span style={{ marginRight: "10px", fontFamily: "Comfortaa", fontSize: 16, fontWeight: "bold" }}>Select a series:</span>
         <select className="dropdown" style={{ width: "200px" }} value={selectedOption} onChange={handleDropdownChange}>
-          {/* <option value="life-expectancies">Life Expectancies</option> */}
           <option value="female-life-expectancy-interpolated">Female Life Expectancy</option>
           <option value="female-death-probability-interpolated">Female Death Probability</option>
           <option value="female-number-of-lives-interpolated">Female Number of Lives</option>
@@ -60,15 +69,9 @@ const App = () => {
         </select>
       </label>
 
-      {/* {data.map(item => (
-        <div key={item.year}>
-          <div>Year: {item.year}, Value: {item['37']}, Value: {item['77']}</div>
-        </div>
-      ))} */}
-
       {loading && <div style={{ marginTop: "8px", marginBottom: "8px", color: "white", fontFamily: "Comfortaa", fontWeight: "bold" }}>Loading...</div>}
 
-      {!loading && data &&
+      {!loading && data.length > 0 &&
         <div>
           <div style={{ margin: 'auto', width: '50%' }}>
             <AnimatedBarChart data={data} title={title} />

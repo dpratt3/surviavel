@@ -9,6 +9,7 @@ import { GrPowerReset } from "react-icons/gr";
 
 interface AnimatedBarChartProps {
     data: { [key: number]: Record<string, string> }[] | null;
+    title: string;
 }
 
 const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
