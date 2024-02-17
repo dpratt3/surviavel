@@ -73,6 +73,11 @@ interface ZoomButtonProps {
     dropdownValues: number[];
 }
 
+interface YearData {
+    year: number;
+    // other properties if they exist
+}
+
 const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
@@ -115,14 +120,13 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     
     // Subsequent runs to plot initial data
     useEffect(() => {
-        const dataArray = Object.values(data);
+        const dataArray: DataItem[] = Object.values(data);
         const subsettedData = dataArray.filter(
             (item) => String(item.year) === String(referenceYear)
         );
         console.log("Subsetted Data:", subsettedData);
         setReferenceData(subsettedData);
     }, [referenceYear, data]);
-
     const onNextFrame = () => {
         setCurrentIndex((current) => (current + 1) % (data ? data.length : 1));
     };
@@ -172,7 +176,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
 
     // if title changes, 
 
-    const yearData = data[currentIndex];
+    const yearData: YearData = data[currentIndex];
     const keys = Object.keys(yearData).filter((key) => key !== "year");
     const values = keys.map((key) => Number(yearData[key]));
 
