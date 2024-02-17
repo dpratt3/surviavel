@@ -178,7 +178,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
 
     // Line trace (static)
     let refData = { ...referenceData["0"] }; // don't delete year key from other objects by reference
-    delete refData.year;
+    // delete refData.year;
     let lineKeys = Object.keys(refData);
     let lineVals = Object.values(refData);
 
