@@ -12,6 +12,11 @@ interface AnimatedBarChartProps {
     title: string;
 }
 
+interface DataItem {
+    year: number;
+    [key: number]: Record<string, string>;
+}
+
 const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
@@ -41,19 +46,21 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
 
     // Initial run to populate reference data
     useEffect(() => {
-        const dataArray = Object.values(data);
-        const subsettedData = dataArray.filter(
-            (item) => item.year === String(referenceYear)
-        );
-        console.log("Subsetted Data:", subsettedData);
-        setReferenceData(subsettedData);
-    }, []);
-
+        if (data) {
+            const dataArray = Object.values(data) as DataItem[];
+            const subsettedData = dataArray.filter(
+                (item) => String(item.year) === String(referenceYear)
+            );
+            console.log("Subsetted Data:", subsettedData);
+            setReferenceData(subsettedData);
+        }
+    }, [data, referenceYear]);
+    
     // Subsequent runs to plot initial data
     useEffect(() => {
         const dataArray = Object.values(data);
         const subsettedData = dataArray.filter(
-            (item) => item.year === String(referenceYear)
+            (item) => String(item.year) === String(referenceYear)
         );
         console.log("Subsetted Data:", subsettedData);
         setReferenceData(subsettedData);
