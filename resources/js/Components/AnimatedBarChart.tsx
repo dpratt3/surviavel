@@ -17,11 +17,48 @@ interface DataItem {
     [key: number]: Record<string, string>;
 }
 
+interface Data {
+    x: string[];
+    y: number[];
+    type: string;
+    name: string;
+    marker?: {
+      color: string;
+    };
+    mode?: string;
+  }
+  
+  interface Layout {
+    title: string;
+    xaxis: {
+      title: string;
+    };
+    yaxis: {
+      title: string;
+    };
+  }
+  
+  interface Config {
+    displayModeBar: boolean;
+    // Add other config options as needed
+  }
+  
+
+interface ZoomButtonProps {
+    minAge: number;
+    maxAge: number;
+    maxY: number; // Add maxY prop
+    onMinAgeChange: (newValue: number) => void;
+    onMaxAgeChange: (newValue: number) => void;
+    onMaxYChange: (newValue: number) => void;
+    dropdownValues: number[];
+}
+
 const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
     const [referenceYear, setReferenceYear] = useState(1941);
-    const [referenceData, setReferenceData] = useState([]);
+    const [referenceData, setReferenceData] = useState<DataItem[]>([]);
     const [currentFrameRate, setCurrentFrameRate] = useState<number>(24);
     const [minAge, setMinAge] = useState(0);
     const [maxAge, setMaxAge] = useState(110);
@@ -45,16 +82,17 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     }, [isAnimating, data, currentFrameRate]);
 
     // Initial run to populate reference data
-    useEffect(() => {
-        if (data) {
-            const dataArray = Object.values(data) as DataItem[];
-            const subsettedData = dataArray.filter(
-                (item) => String(item.year) === String(referenceYear)
-            );
-            console.log("Subsetted Data:", subsettedData);
-            setReferenceData(subsettedData);
-        }
-    }, [data, referenceYear]);
+    // useEffect(() => {
+    //     if (data) {
+    //         const dataArray = Object.values(data) as DataItem[];
+    //         const subsettedData = dataArray.filter(
+    //             (item) => item.year === referenceYear
+    //         ) as DataItem[];
+            
+    //         console.log("Subsetted Data:", subsettedData);
+    //         setReferenceData(subsettedData);
+    //     }
+    // }, [data, referenceYear]);
     
     // Subsequent runs to plot initial data
     useEffect(() => {
@@ -153,28 +191,29 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         },
     ];
 
-    // Set chart y-axis title and range
-    if (title.endsWith("Probability")) {
-        var reactiveTitle = "<b>Probability<b>";
-        // highest toward the end of life
-        const deathProbs = data.map(x => x[Number(maxAge)]);
-        const maxProb = Math.max(...deathProbs);
-        const maxY = Math.ceil(maxProb * 10) / 10;
-        var optimalRange = [0, maxY];
-    } else if (title.endsWith("Expectancy")) {
-        // highest life expectancy around age 1
-        const lifeExpectancies = data.map(x => x[Number(minAge)])
-        const maxLifeExp = Math.max(...lifeExpectancies)
-        const maxY = 1.10 * Math.ceil(maxLifeExp * 10) / 10;
-        var optimalRange = [0, maxY];
-        var reactiveTitle = "<b>Years<b>";
-    } else {
-        const survivorCount = data.map(x => x[Number(minAge) + 1])
-        console.log(survivorCount)
-        const maxSurvivorCount = Math.max(...survivorCount)
-        var reactiveTitle = "<b>Survivors<b>";
-        var optimalRange = [0, maxSurvivorCount];
-    }
+// Set chart y-axis title and range
+if (title.endsWith("Probability")) {
+    var reactiveTitle = "<b>Probability<b>";
+    // highest toward the end of life
+    const deathProbs = data.map(x => Number(x[maxAge])); // Convert to number
+    const maxProb = Math.max(...deathProbs);
+    const maxY = Math.ceil(maxProb * 10) / 10;
+    var optimalRange = [0, maxY];
+} else if (title.endsWith("Expectancy")) {
+    // highest life expectancy around age 1
+    const lifeExpectancies = data.map(x => Number(x[minAge])); // Convert to number
+    const maxLifeExp = Math.max(...lifeExpectancies);
+    const maxY = 1.10 * Math.ceil(maxLifeExp * 10) / 10;
+    var optimalRange = [0, maxY];
+    var reactiveTitle = "<b>Years<b>";
+} else {
+    const survivorCount = data.map(x => Number(x[minAge + 1])); // Convert to number
+    console.log(survivorCount);
+    const maxSurvivorCount = Math.max(...survivorCount);
+    var reactiveTitle = "<b>Survivors<b>";
+    var optimalRange = [0, maxSurvivorCount];
+}
+
 
     // Make plotly only plot integer tick values
     const tickBuffer = 0.5;
