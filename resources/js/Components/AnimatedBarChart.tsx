@@ -144,10 +144,10 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         (_, index) => 1941 + index
     );
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setReferenceYear(parseInt(event.target.value, 10)); // Convert the value to an integer
     };
-
+    
     const resetParams = () => {
         setReferenceYear(1941);
         setCurrentIndex(0);
