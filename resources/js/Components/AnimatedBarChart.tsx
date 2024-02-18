@@ -6,6 +6,7 @@ import ZoomButton from "./ZoomButton";
 import "../../css/app.css";
 import { FaBackwardStep, FaForwardStep, FaPlay, FaStop } from "react-icons/fa6";
 import { GrPowerReset } from "react-icons/gr";
+import { Layout as PlotlyLayout } from 'plotly.js';
 
 interface AnimatedBarChartProps {
     data: { [key: number]: Record<string, string> }[] | null;
@@ -98,13 +99,14 @@ interface Layout {
     paper_bgcolor: string;
     plot_bgcolor: string;
     responsive: boolean;
-    margin?: {
+    margin?: {  // Add margin property here
         l: number;
         r: number;
         t: number;
         b: number;
     };
 }
+
 
 
 interface Config {
@@ -294,7 +296,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const min = Math.floor(Number(minAge));
     const max = Math.ceil(Number(maxAge));
 
-    const layout = {
+    const layout: PlotlyLayout = {
         font: {
             color: 'white',
         },
@@ -311,7 +313,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             size: 24,
             bold: true,
         },
-        dragmode: 'false',
         xaxis: {
             title: {
                 text: "<b>Age</b>",
