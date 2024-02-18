@@ -168,7 +168,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         const subsettedData = dataArray.filter(
             (item) => String(item.year) === String(referenceYear)
         );
-        console.log("Subsetted Data:", subsettedData);
+
         setReferenceData(subsettedData);
     }, [referenceYear, data]);
 
@@ -286,7 +286,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         var reactiveTitle = "<b>Years<b>";
     } else {
         const survivorCount = data.map(x => Number(x[minAge + 1])); // Convert to number
-        console.log(survivorCount);
         const maxSurvivorCount = Math.max(...survivorCount);
         var reactiveTitle = "<b>Survivors<b>";
         var optimalRange = [0, maxSurvivorCount];
