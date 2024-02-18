@@ -29,14 +29,83 @@ interface Data {
   }
   
   interface Layout {
-    title: string;
+    font: {
+        color: string;
+    };
+    title: {
+        text: string;
+        font: {
+            color: string;
+            size: number;
+            family: string;
+        };
+    };
+    titlefont: {
+        color: string;
+        size: number;
+        bold: boolean;
+    };
+    dragmode: string;
     xaxis: {
-      title: string;
+        title: {
+            text: string;
+            font: {
+                color: string;
+                size: number;
+                family: string;
+            };
+        };
+        tickfont: {
+            color: string;
+            size: number;
+            family: string;
+        };
+        tickmode: string;
+        tickformat: string;
+        range: number[];
     };
     yaxis: {
-      title: string;
+        title: {
+            text: string;
+            font: {
+                color: string;
+                size: number;
+                family: string;
+                weight?: string;
+            };
+        };
+        range?: number[];
+        tickfont: {
+            color: string;
+            size: number;
+            family: string;
+        };
+        automargin?: boolean;
     };
-  }
+    legend?: {
+        x: number;
+        xanchor: string;
+        y: number;
+        traceorder: string;
+        orientation: string;
+        font: {
+            color: string;
+            size: number;
+            family: string;
+        };
+    };
+    autosize: boolean;
+    paper_bgcolor: string;
+    plot_bgcolor: string;
+    responsive: boolean;
+    margin?: {
+        l: number;
+        r: number;
+        t: number;
+        b: number;
+    };
+}
+
   
   interface Config {
     displayModeBar: boolean;
@@ -75,7 +144,6 @@ interface ZoomButtonProps {
 
 interface YearData {
     year: number;
-    // other properties if they exist
 }
 
 const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
@@ -130,6 +198,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const onNextFrame = () => {
         setCurrentIndex((current) => (current + 1) % (data ? data.length : 1));
     };
+    
 
     const onPriorFrame = () => {
         setCurrentIndex(
@@ -175,6 +244,12 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     }
 
     // if title changes, 
+
+    interface YearData {
+        year: number;
+        [key: string]: string | number; // Index signature
+    }
+    
 
     const yearData: YearData = data[currentIndex];
     const keys = Object.keys(yearData).filter((key) => key !== "year");
@@ -236,73 +311,65 @@ if (title.endsWith("Probability")) {
     var optimalRange = [0, maxSurvivorCount];
 }
 
-
     // Make plotly only plot integer tick values
     const tickBuffer = 0.5;
     const min = Math.floor(Number(minAge));
     const max = Math.ceil(Number(maxAge));
 
-    var layout = {
+    const layout = {
         font: {
-            color: 'white', // Set text color to white
+            color: 'white',
         },
-
         title: {
             text: `<b>${title} in ${Math.floor(yearData.year)}</b>`,
             font: {
                 color: 'white',
                 size: 24,
-                family: 'Comfortaa', // Adjust font family if needed
+                family: 'Comfortaa',
             },
         },
-
         titlefont: {
             color: 'white',
-            size: 24, // Adjust title font size as needed
-            bold: true, // Make the title bold
+            size: 24,
+            bold: true,
         },
-
-        dragmode: 'false', // Set drag mode to pan to disable zoom
-
+        dragmode: 'false',
         xaxis: {
             title: {
                 text: "<b>Age</b>",
                 font: {
                     color: 'white',
-                    size: 18, // Adjust the size of the x-axis label
-                    family: 'Comfortaa', // Adjust font family if needed
+                    size: 18,
+                    family: 'Comfortaa',
                 },
             },
             tickfont: {
                 color: 'white',
                 size: 18,
-                family: 'Comfortaa', // Adjust font family if needed
+                family: 'Comfortaa',
             },
-            
             tickmode: 'auto',
             tickformat: 'd',
             range: [Number(minAge) - 0.50, Number(maxAge) + 0.50]
         },
-
         yaxis: {
             title: {
                 text: reactiveTitle,
                 font: {
                     color: 'white',
-                    size: 18, // Adjust the size of the y-axis label
-                    family: 'Comfortaa', // Adjust font family if needed
-                    weight: 'bold', // Make the y-axis title bold
+                    size: 18,
+                    family: 'Comfortaa',
+                    weight: 'bold',
                 },
             },
             range: optimalRange,
             tickfont: {
                 color: 'white',
                 size: 18,
-                family: 'Comfortaa', // Adjust font family if needed
+                family: 'Comfortaa',
             },
-            automargin: true, // Allow automatic margin adjustment
+            automargin: true,
         },
-
         legend: {
             x: 0.5,
             xanchor: "center",
@@ -311,16 +378,16 @@ if (title.endsWith("Probability")) {
             orientation: "h",
             font: {
                 color: 'white',
-                size: 14, // Adjust the size of the x-axis label
-                family: 'Comfortaa', // Adjust font family if needed
+                size: 14,
+                family: 'Comfortaa',
             },
         },
-
         autosize: true,
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
-        responsive: true, // Enable responsive behavior
+        responsive: true,
     };
+    
 
     // Dynamically adjust margins for cellphones (media alternative query)
     if (window.innerWidth <= 767) {
