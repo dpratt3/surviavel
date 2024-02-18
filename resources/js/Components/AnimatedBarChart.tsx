@@ -296,7 +296,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const min = Math.floor(Number(minAge));
     const max = Math.ceil(Number(maxAge));
 
-    const layout: PlotlyLayout = {
+    const layout: Partial<PlotlyLayout> = {
         font: {
             color: 'white',
         },
@@ -328,7 +328,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
             },
             tickmode: 'auto',
             tickformat: 'd',
-            range: [Number(minAge) - 0.50, Number(maxAge) + 0.50]
+            range: [Number(minAge) - 0.50, Number(maxAge) + 0.50],
         },
         yaxis: {
             title: {
@@ -337,7 +337,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     color: 'white',
                     size: 18,
                     family: 'Comfortaa',
-                    weight: 'bold',
                 },
             },
             range: optimalRange,
@@ -363,9 +362,9 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         autosize: true,
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
-        responsive: true,
+        // Add any additional properties as needed
     };
-
+    
 
     // Dynamically adjust margins for cellphones (media alternative query)
     if (window.innerWidth <= 767) {
@@ -386,10 +385,14 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
 
     // Conditionally change layout to fit small age ranges
     if (Number(maxAge) - Number(minAge) < 6) {
-        layout.xaxis.tickmode = 'array';
-        (layout.xaxis as XAxisLayout).tickvals = Array.from({ length: Math.ceil(Number(maxAge) - Number(minAge)) + 1 }, (_, i) => Number(minAge) + i);
-        layout.xaxis.tickformat = 'd';
-        layout.xaxis.range = [Number(minAge) - 0.50, Number(maxAge) + 0.50];
+        if (layout.xaxis) {
+            layout.xaxis.tickmode = 'array';
+            layout.xaxis.tickformat = 'd';
+            layout.xaxis.range = [Number(minAge) - 0.50, Number(maxAge) + 0.50];
+        } else {
+            // If layout.xaxis is undefined, you might want to handle this case accordingly
+            console.error('layout.xaxis is undefined');
+        }
     }
 
     return (
