@@ -311,7 +311,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         titlefont: {
             color: 'white',
             size: 24,
-            bold: true,
         },
         xaxis: {
             title: {
