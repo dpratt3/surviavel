@@ -23,12 +23,12 @@ interface Data {
     type: string;
     name: string;
     marker?: {
-      color: string;
+        color: string;
     };
     mode?: string;
-  }
-  
-  interface Layout {
+}
+
+interface Layout {
     font: {
         color: string;
     };
@@ -106,13 +106,13 @@ interface Data {
     };
 }
 
-  
-  interface Config {
+
+interface Config {
     displayModeBar: boolean;
     // Add other config options as needed
-  }
-  
-  interface XAxisLayout {
+}
+
+interface XAxisLayout {
     title: {
         text: string;
         font: {
@@ -135,12 +135,14 @@ interface Data {
 interface ZoomButtonProps {
     minAge: number;
     maxAge: number;
-    maxY: number; // Add maxY prop
-    onMinAgeChange: (newValue: number) => void;
-    onMaxAgeChange: (newValue: number) => void;
-    onMaxYChange: (newValue: number) => void;
-    dropdownValues: number[];
+    maxY: number;
+    onMinAgeChange: (value: number) => void;
+    onMaxAgeChange: (value: number) => void;
+    onMaxYChange: (value: number) => void;
+    layout: Record<string, any>;
+    dropdownValues: number[]; // Ensure dropdownValues is defined
 }
+
 
 interface YearData {
     year: number;
@@ -180,28 +182,29 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     //         const subsettedData = dataArray.filter(
     //             (item) => item.year === referenceYear
     //         ) as DataItem[];
-            
+
     //         console.log("Subsetted Data:", subsettedData);
     //         setReferenceData(subsettedData);
     //     }
     // }, [data, referenceYear]);
-    
+
+    // Subsequent runs to plot initial data
     // Subsequent runs to plot initial data
     useEffect(() => {
         // Assert that data is of type DataItem[]
-        const dataArray: DataItem[] = Object.values(data) as DataItem[];
+        const dataArray: DataItem[] = (data as DataItem[]) || []; // Ensure data is treated as DataItem[]
         const subsettedData = dataArray.filter(
             (item) => String(item.year) === String(referenceYear)
         );
         console.log("Subsetted Data:", subsettedData);
         setReferenceData(subsettedData);
     }, [referenceYear, data]);
-    
+
     const onNextFrame = () => {
         setCurrentIndex((current) => (current + 1) % (data ? data.length : 1));
     };
-    
-    
+
+
 
     const onPriorFrame = () => {
         setCurrentIndex(
@@ -223,7 +226,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setReferenceYear(parseInt(event.target.value, 10)); // Convert the value to an integer
     };
-    
+
     const resetParams = () => {
         setReferenceYear(1941);
         setCurrentIndex(0);
@@ -251,7 +254,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         year: number;
         [key: string]: string | number; // Index signature
     }
-    
+
     const yearData: YearData = data[currentIndex];
     const keys = Object.keys(yearData).filter((key) => key !== "year");
     const values = keys.map((key) => Number(yearData[key]));
@@ -289,28 +292,28 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         },
     ];
 
-// Set chart y-axis title and range
-if (title.endsWith("Probability")) {
-    var reactiveTitle = "<b>Probability<b>";
-    // highest toward the end of life
-    const deathProbs = data.map(x => Number(x[maxAge])); // Convert to number
-    const maxProb = Math.max(...deathProbs);
-    const maxY = Math.ceil(maxProb * 10) / 10;
-    var optimalRange = [0, maxY];
-} else if (title.endsWith("Expectancy")) {
-    // highest life expectancy around age 1
-    const lifeExpectancies = data.map(x => Number(x[minAge])); // Convert to number
-    const maxLifeExp = Math.max(...lifeExpectancies);
-    const maxY = 1.10 * Math.ceil(maxLifeExp * 10) / 10;
-    var optimalRange = [0, maxY];
-    var reactiveTitle = "<b>Years<b>";
-} else {
-    const survivorCount = data.map(x => Number(x[minAge + 1])); // Convert to number
-    console.log(survivorCount);
-    const maxSurvivorCount = Math.max(...survivorCount);
-    var reactiveTitle = "<b>Survivors<b>";
-    var optimalRange = [0, maxSurvivorCount];
-}
+    // Set chart y-axis title and range
+    if (title.endsWith("Probability")) {
+        var reactiveTitle = "<b>Probability<b>";
+        // highest toward the end of life
+        const deathProbs = data.map(x => Number(x[maxAge])); // Convert to number
+        const maxProb = Math.max(...deathProbs);
+        const maxY = Math.ceil(maxProb * 10) / 10;
+        var optimalRange = [0, maxY];
+    } else if (title.endsWith("Expectancy")) {
+        // highest life expectancy around age 1
+        const lifeExpectancies = data.map(x => Number(x[minAge])); // Convert to number
+        const maxLifeExp = Math.max(...lifeExpectancies);
+        const maxY = 1.10 * Math.ceil(maxLifeExp * 10) / 10;
+        var optimalRange = [0, maxY];
+        var reactiveTitle = "<b>Years<b>";
+    } else {
+        const survivorCount = data.map(x => Number(x[minAge + 1])); // Convert to number
+        console.log(survivorCount);
+        const maxSurvivorCount = Math.max(...survivorCount);
+        var reactiveTitle = "<b>Survivors<b>";
+        var optimalRange = [0, maxSurvivorCount];
+    }
 
     // Make plotly only plot integer tick values
     const tickBuffer = 0.5;
@@ -388,7 +391,7 @@ if (title.endsWith("Probability")) {
         plot_bgcolor: 'rgba(0,0,0,0)',
         responsive: true,
     };
-    
+
 
     // Dynamically adjust margins for cellphones (media alternative query)
     if (window.innerWidth <= 767) {
@@ -406,14 +409,14 @@ if (title.endsWith("Probability")) {
             b: 50,  // bottom margin
         };
     }
-    
+
     // Conditionally change layout to fit small age ranges
     if (Number(maxAge) - Number(minAge) < 6) {
         layout.xaxis.tickmode = 'array';
         (layout.xaxis as XAxisLayout).tickvals = Array.from({ length: Math.ceil(Number(maxAge) - Number(minAge)) + 1 }, (_, i) => Number(minAge) + i);
         layout.xaxis.tickformat = 'd';
         layout.xaxis.range = [Number(minAge) - 0.50, Number(maxAge) + 0.50];
-    }  
+    }
 
     return (
         <div>

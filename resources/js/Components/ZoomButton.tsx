@@ -4,10 +4,14 @@ import { FaSearch } from "react-icons/fa";
 interface ZoomButtonProps {
     minAge: number;
     maxAge: number;
+    maxY: number;
     onMinAgeChange: (value: number) => void;
     onMaxAgeChange: (value: number) => void;
+    onMaxYChange: (value: number) => void;
     layout: Record<string, any>;
+    dropdownValues: number[]; // Ensure dropdownValues is defined
 }
+
 
 const ZoomButton: React.FC<ZoomButtonProps> = ({ minAge, maxAge, onMinAgeChange, onMaxAgeChange, layout }) => {
     const [newMinAge, setNewMinAge] = useState(minAge);
