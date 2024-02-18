@@ -188,16 +188,19 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     
     // Subsequent runs to plot initial data
     useEffect(() => {
-        const dataArray: DataItem[] = Object.values(data);
+        // Assert that data is of type DataItem[]
+        const dataArray: DataItem[] = Object.values(data) as DataItem[];
         const subsettedData = dataArray.filter(
             (item) => String(item.year) === String(referenceYear)
         );
         console.log("Subsetted Data:", subsettedData);
         setReferenceData(subsettedData);
     }, [referenceYear, data]);
+    
     const onNextFrame = () => {
         setCurrentIndex((current) => (current + 1) % (data ? data.length : 1));
     };
+    
     
 
     const onPriorFrame = () => {
@@ -244,13 +247,11 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     }
 
     // if title changes, 
-
     interface YearData {
         year: number;
         [key: string]: string | number; // Index signature
     }
     
-
     const yearData: YearData = data[currentIndex];
     const keys = Object.keys(yearData).filter((key) => key !== "year");
     const values = keys.map((key) => Number(yearData[key]));
