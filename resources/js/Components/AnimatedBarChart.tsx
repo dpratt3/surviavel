@@ -132,16 +132,16 @@ interface XAxisLayout {
     tickvals?: number[]; // Ensure tickvals is optional
 }
 
-interface ZoomButtonProps {
-    minAge: number;
-    maxAge: number;
-    maxY: number;
-    onMinAgeChange: (value: number) => void;
-    onMaxAgeChange: (value: number) => void;
-    onMaxYChange: (value: number) => void;
-    layout: Record<string, any>;
-    dropdownValues: number[]; // Ensure dropdownValues is defined
-}
+// interface ZoomButtonProps {
+//     minAge: number;
+//     maxAge: number;
+//     maxY: number;
+//     onMinAgeChange: (value: number) => void;
+//     onMaxAgeChange: (value: number) => void;
+//     onMaxYChange: (value: number) => void;
+//     layout: Record<string, any>;
+//     dropdownValues: number[]; // Ensure dropdownValues is defined
+// }
 
 
 interface YearData {
@@ -564,6 +564,7 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                     onMaxAgeChange={setMaxAge}
                     onMaxYChange={setMaxY}
                     dropdownValues={dropdownValues}
+                    layout={layout}
                 />
 
                 {/* <button onClick={resetParams}> Reset </button> */}
