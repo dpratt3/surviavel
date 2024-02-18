@@ -436,11 +436,12 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
                 {/* <p>Selected Year: {referenceYear}</p> */}
             </div>
             <div className="plot-container" style={{ marginBottom: "20px", marginLeft: "10px" }}>
-                <Plot
-                    data={frames[0].data}
-                    layout={layout}
-                    config={{ displayModeBar: false }}
-                />
+            <Plot
+                data={frames[0].data as Plotly.Data[]}
+                layout={layout as Partial<Plotly.Layout>}
+                config={{ displayModeBar: false }}
+            />
+
             </div>
             <div
                 style={{
