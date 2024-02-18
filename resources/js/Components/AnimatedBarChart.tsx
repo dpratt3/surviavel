@@ -132,18 +132,6 @@ interface XAxisLayout {
     tickvals?: number[]; // Ensure tickvals is optional
 }
 
-// interface ZoomButtonProps {
-//     minAge: number;
-//     maxAge: number;
-//     maxY: number;
-//     onMinAgeChange: (value: number) => void;
-//     onMaxAgeChange: (value: number) => void;
-//     onMaxYChange: (value: number) => void;
-//     layout: Record<string, any>;
-//     dropdownValues: number[]; // Ensure dropdownValues is defined
-// }
-
-
 interface YearData {
     year: number;
 }
@@ -175,20 +163,6 @@ const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
         };
     }, [isAnimating, data, currentFrameRate]);
 
-    // Initial run to populate reference data
-    // useEffect(() => {
-    //     if (data) {
-    //         const dataArray = Object.values(data) as DataItem[];
-    //         const subsettedData = dataArray.filter(
-    //             (item) => item.year === referenceYear
-    //         ) as DataItem[];
-
-    //         console.log("Subsetted Data:", subsettedData);
-    //         setReferenceData(subsettedData);
-    //     }
-    // }, [data, referenceYear]);
-
-    // Subsequent runs to plot initial data
     // Subsequent runs to plot initial data
     useEffect(() => {
         // Assert that data is of type DataItem[]
