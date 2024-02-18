@@ -1,5 +1,5 @@
 import React, { useEffect, useState, ChangeEvent } from 'react';
-import { createRoot } from 'react-dom/client'; // Import createRoot
+import { createRoot } from 'react-dom/client';
 import axios from 'axios';
 import AnimatedBarChart from '../Components/AnimatedBarChart';
 import '../../css/app.css';
@@ -18,6 +18,7 @@ const App = () => {
   const [data, setData] = useState<DataItem[]>([]);
   const [selectedOption, setSelectedOption] = useState<string>('female-number-of-lives-interpolated');
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   const titleMap: { [key: string]: string } = {
     'female-life-expectancy-interpolated': 'Female Life Expectancy',
@@ -36,8 +37,10 @@ const App = () => {
         setLoading(true);
         const response = await axios.get<DataItem[]>(`http://localhost:8000/api/${selectedOption}`);
         setData(response.data);
+        setError(null); // Reset error state if successful
       } catch (error) {
         console.error('Error fetching data:', error);
+        setError('Error fetching data. Please try again later.'); // Set error message
       } finally {
         setLoading(false);
       }
@@ -67,7 +70,9 @@ const App = () => {
 
       {loading && <div style={{ marginTop: '8px', marginBottom: '8px', color: 'white', fontFamily: 'Comfortaa', fontWeight: 'bold' }}>Loading...</div>}
 
-      {!loading && data.length > 0 && (
+      {error && <div style={{ marginTop: '8px', marginBottom: '8px', color: 'red', fontFamily: 'Comfortaa', fontWeight: 'bold' }}>{error}</div>}
+
+      {!loading && !error && data.length > 0 && (
         <div>
           <div style={{ margin: 'auto', width: '50%' }}>
             <AnimatedBarChart data={data} title={title} />
@@ -94,7 +99,7 @@ const Head = () => (
 const appElement = document.getElementById('app');
 
 if (appElement) {
-  createRoot(appElement).render( // Use createRoot instead of ReactDOM.render
+  createRoot(appElement).render(
     <>
       <Head />
       <App />
