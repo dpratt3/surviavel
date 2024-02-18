@@ -134,10 +134,6 @@ interface XAxisLayout {
     tickvals?: number[]; // Ensure tickvals is optional
 }
 
-interface YearData {
-    year: number;
-}
-
 const AnimatedBarChart: React.FC<AnimatedBarChartProps> = ({ data, title }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
