@@ -1,6 +1,6 @@
 import React, { useEffect, useState, ChangeEvent } from 'react';
+import { createRoot } from 'react-dom/client'; // Import createRoot
 import axios from 'axios';
-import { createRoot } from 'react-dom/client';
 import AnimatedBarChart from '../Components/AnimatedBarChart';
 import '../../css/app.css';
 
@@ -94,7 +94,7 @@ const Head = () => (
 const appElement = document.getElementById('app');
 
 if (appElement) {
-  createRoot(appElement).render(
+  createRoot(appElement).render( // Use createRoot instead of ReactDOM.render
     <>
       <Head />
       <App />
