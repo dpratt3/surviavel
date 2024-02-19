@@ -2,7 +2,8 @@ import React, { useEffect, useState, ChangeEvent } from 'react';
 import { createRoot } from 'react-dom/client';
 import axios from 'axios';
 import AnimatedBarChart from '../Components/AnimatedBarChart';
-import { usePage } from '@inertiajs/inertia-react'; // Import usePage hook
+import { usePage } from '@inertiajs/react'; // Import usePage hook
+import { Helmet } from 'react-helmet';
 
 interface DataItem {
   year: number;
@@ -58,6 +59,9 @@ const Welcome = () =>{
 
   return (
     <div style={{ textAlign: 'center' }}>
+                  <Helmet>
+                <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet" />
+            </Helmet>
       <h1 style={{ fontFamily: 'Comfortaa' }}>Survivorage</h1>
       <label style={{ color: 'white' }}>
         <span style={{ marginRight: '10px', fontFamily: 'Comfortaa', fontSize: 16, fontWeight: 'bold' }}>Select a series:</span>
@@ -92,12 +96,6 @@ const Welcome = () =>{
   );
 };
 
-// //Include Google Fonts stylesheet directly in the component
-// const Head = () => (
-//   <head>
-//     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet" />
-//   </head>
-// );
 
 // const appElement = document.getElementById('app');
 
@@ -110,6 +108,6 @@ const Welcome = () =>{
 //   );
 // } else {
 //   console.error("Element with ID 'app' not found in the DOM.");
-// }Redefining a
+// }
 
 export default Welcome;
