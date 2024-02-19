@@ -2,7 +2,7 @@ import React, { useEffect, useState, ChangeEvent } from 'react';
 import { createRoot } from 'react-dom/client';
 import axios from 'axios';
 import AnimatedBarChart from '../Components/AnimatedBarChart';
-import '../../css/app.css';
+import { usePage } from '@inertiajs/inertia-react'; // Import usePage hook
 
 interface DataItem {
   year: number;
@@ -14,11 +14,13 @@ interface AnimatedBarChartProps {
   title: string;
 }
 
-const App = () => {
+const Welcome = () =>{
+  const { appUrl } = usePage().props; // Access shared data
   const [data, setData] = useState<DataItem[]>([]);
   const [selectedOption, setSelectedOption] = useState<string>('female-number-of-lives-interpolated');
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  
 
   const titleMap: { [key: string]: string } = {
     'female-life-expectancy-interpolated': 'Female Life Expectancy',
@@ -32,10 +34,11 @@ const App = () => {
   const title = titleMap[selectedOption];
 
   useEffect(() => {
+    
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get<DataItem[]>(`http://localhost:8000/api/${selectedOption}`);
+        const response = await axios.get<DataItem[]>(`${appUrl}/api/${selectedOption}`);
         setData(response.data);
         setError(null); // Reset error state if successful
       } catch (error) {
@@ -89,22 +92,24 @@ const App = () => {
   );
 };
 
-// Include Google Fonts stylesheet directly in the component
-const Head = () => (
-  <head>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet" />
-  </head>
-);
+// //Include Google Fonts stylesheet directly in the component
+// const Head = () => (
+//   <head>
+//     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet" />
+//   </head>
+// );
 
-const appElement = document.getElementById('app');
+// const appElement = document.getElementById('app');
 
-if (appElement) {
-  createRoot(appElement).render(
-    <>
-      <Head />
-      <App />
-    </>,
-  );
-} else {
-  console.error("Element with ID 'app' not found in the DOM.");
-}
+// if (appElement) {
+//   createRoot(appElement).render(
+//     <>
+//       <Head />
+//       <App />
+//     </>,
+//   );
+// } else {
+//   console.error("Element with ID 'app' not found in the DOM.");
+// }Redefining a
+
+export default Welcome;

@@ -5,10 +5,7 @@ interface FrameRateControlProps {
     currentFrameRate: number;
 }
 
-const FrameRateControl: React.FC<FrameRateControlProps> = ({
-    onChange,
-    currentFrameRate,
-}) => {
+const FrameRateControl: React.FC<FrameRateControlProps> = ({onChange, currentFrameRate}) => {
     const [frameRate, setFrameRate] = useState<number>(currentFrameRate);
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
