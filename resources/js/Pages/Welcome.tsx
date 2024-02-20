@@ -5,6 +5,7 @@ import AnimatedBarChart from '../Components/AnimatedBarChart';
 import { usePage } from '@inertiajs/react'; // Import usePage hook
 import { Helmet } from 'react-helmet';
 import ReactGA from "react-ga4";
+import { Head } from '@inertiajs/react'
 
 ReactGA.initialize("G-X9ZPTD9PEL");
 
@@ -93,6 +94,7 @@ const Welcome = () => {
       <Helmet>
         <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet" />
       </Helmet>
+      <Head title="Survivorage" />
       <h1 style={{ fontFamily: 'Comfortaa' }}>Survivorage</h1>
       <label style={{ color: 'white' }}>
         <span style={{ marginRight: '10px', fontFamily: 'Comfortaa', fontSize: 16, fontWeight: 'bold' }}>Select a series:</span>
