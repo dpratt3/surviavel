@@ -4,6 +4,37 @@ import axios from 'axios';
 import AnimatedBarChart from '../Components/AnimatedBarChart';
 import { usePage } from '@inertiajs/react'; // Import usePage hook
 import { Helmet } from 'react-helmet';
+import ReactGA from "react-ga4";
+
+ReactGA.initialize("G-X9ZPTD9PEL");
+
+ReactGA.event({
+  action: "animation_interaction",
+  category: "Survival Statistics Animation",
+  label: "Started Animation"
+});
+
+// Example event tracking for data filter interactions
+ReactGA.event({
+  action: "data_filter_interaction",
+  category: "Survival Statistics Filter",
+  label: "Selected Dataset"
+});
+
+// Example event tracking for downloads
+ReactGA.event({
+  action: "download",
+  category: "Survival Statistics Download",
+  label: "Downloaded Image"
+});
+
+// Example event tracking for external link clicks
+ReactGA.event({
+  action: "external_link_click",
+  category: "Link Interaction",
+  label: "Clicked External Link"
+});
+
 
 interface DataItem {
   year: number;
