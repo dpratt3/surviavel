@@ -92,6 +92,7 @@ const Welcome = () => {
   return (
     <div style={{ textAlign: 'center' }}>
       <Helmet>
+        <link rel="icon" type="image/png" href="/favicon-16x16.png" />
         <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet" />
       </Helmet>
       <Head title="Survivorage" />
