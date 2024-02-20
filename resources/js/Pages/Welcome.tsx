@@ -46,13 +46,13 @@ interface AnimatedBarChartProps {
   title: string;
 }
 
-const Welcome = () =>{
+const Welcome = () => {
   const { appUrl } = usePage().props; // Access shared data
   const [data, setData] = useState<DataItem[]>([]);
   const [selectedOption, setSelectedOption] = useState<string>('female-number-of-lives-interpolated');
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  
+
 
   const titleMap: { [key: string]: string } = {
     'female-life-expectancy-interpolated': 'Female Life Expectancy',
@@ -66,7 +66,7 @@ const Welcome = () =>{
   const title = titleMap[selectedOption];
 
   useEffect(() => {
-    
+
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -90,9 +90,9 @@ const Welcome = () =>{
 
   return (
     <div style={{ textAlign: 'center' }}>
-                  <Helmet>
-                <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet" />
-            </Helmet>
+      <Helmet>
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet" />
+      </Helmet>
       <h1 style={{ fontFamily: 'Comfortaa' }}>Survivorage</h1>
       <label style={{ color: 'white' }}>
         <span style={{ marginRight: '10px', fontFamily: 'Comfortaa', fontSize: 16, fontWeight: 'bold' }}>Select a series:</span>
@@ -126,19 +126,5 @@ const Welcome = () =>{
     </div>
   );
 };
-
-
-// const appElement = document.getElementById('app');
-
-// if (appElement) {
-//   createRoot(appElement).render(
-//     <>
-//       <Head />
-//       <App />
-//     </>,
-//   );
-// } else {
-//   console.error("Element with ID 'app' not found in the DOM.");
-// }
 
 export default Welcome;
