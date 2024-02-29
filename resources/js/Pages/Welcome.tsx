@@ -118,10 +118,15 @@ const Welcome = () => {
           <div style={{ margin: 'auto', width: '50%' }}>
             <AnimatedBarChart data={data} title={title} />
           </div>
-          <div className="container">
+          <div className="container" style={{textAlign: "center"}}>
+          <div style={{display: "inline-block", textAlign: "left"}}>
             Data is from the <a href="https://site.demog.berkeley.edu/" className="link">Berkeley Mortality Database</a> (1941-2003)
             <div style={{ marginTop: '10px' }}>
               and the <a href="https://www.ssa.gov/oact/STATS/table4c6.html" className="link">Social Security Administration</a> (2004-2020)
+            </div>
+            <div style={{ marginTop: '10px', textAlign: "center" }}>
+             Visit <a href="https://midnightmechanism.com" className="link">Midnight Mechanism</a>
+             </div>
             </div>
           </div>
         </div>
